@@ -13,17 +13,25 @@ if(isset($_POST['username'])){
     class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center"
   >
     <h2>Welcome To Your Admin Menu</h2>
-    <form class="d-flex mt-2 mb-2" role="search">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-light" type="submit">
-        Search
-      </button>
-    </form>
+    <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
+    <input 
+      name="page"
+      type="hidden"
+      value="showSale"
+    />
+    <input
+      class="form-control me-2"
+      name="search"
+      type="search"
+      placeholder="Search"
+      <?= isset($_GET['search']) ? 'value="'.$_GET['search'].'"' : '' ?>
+      aria-label="Search"
+    />
+    <button class="btn btn-outline-light" type="submit">
+      Search
+    </button>
+    <?= isset($_GET['search']) ? '<a class="btn btn-outline-dark"  href="?page=showSale">Reset</a>' : '' ?>
+  </form>
   </div>
 
   <!-- Form -->
