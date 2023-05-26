@@ -1,0 +1,33 @@
+name: Deploy to VPS via SSH
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+    - name: Deploy to VPS
+      run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.IP_VPS }} "
+            git config --global safe.directory '*' ;
+            cd /www/wwwroot/pemweb.hoaks.my.id/bayview ;
+            if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/hubedid/fp-pemweb-dev.git .; fi
+            git checkout . ;
+            git pull origin master ;
+            cd /www/wwwroot/pemweb.hoaks.my.id/bayview/database ;
+            if [ -f connection.php ]; then rm connection.php; fi ;
+            echo '${{ secrets.MYSQL_CONNECTION }}' >> connection.php ;
+            echo 'yahahaha hayuukkkkk Deployment completed.'
+          "
