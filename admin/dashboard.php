@@ -5,11 +5,6 @@ if(empty($_SESSION['logged_in'])){
     header('Location: index.php');
     die();
 }
-if(isset($_GET['logout'])){
-    session_destroy();
-    header('Location: index.php');
-    die();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,7 +130,7 @@ if(isset($_GET['logout'])){
               <a
                 class="menu nav-link p-2"
                 aria-current="page"
-                href="dashboard.php?logout=true"
+                href="dashboard.php?page=logout"
                 ><i class="fa-solid fa-right-from-bracket me-3 ps-2"></i
                 >Logout</a
               >
