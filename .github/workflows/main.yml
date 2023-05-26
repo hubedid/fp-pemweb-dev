@@ -28,6 +28,6 @@ jobs:
             git pull origin master ;
             cd database ;
             if [ -f connection.php ]; then rm connection.php; fi ;
-            echo '${{ vars.KONEKSI_MYSQL }}' >> .env ;
+            echo '${{ vars.KONEKSI_MYSQL }}' >> connection.php ;
             echo 'yahahaha hayuukkkkk Deployment completed.'
           "
