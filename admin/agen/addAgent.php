@@ -1,4 +1,5 @@
 <?php
+include('../database/connection.php'); 
 if(isset($_POST['nama'])){
   $ext  = array('image/jpg','image/jpeg','image/pjpeg','image/png','image/x-png');
   $tipe = $_FILES['gambar']['type'];
@@ -28,6 +29,15 @@ if(isset($_POST['nama'])){
   } else {
       echo '<script type="text/javascript">alert("Tidak ada foto yang dipilih");window.history.go(-1);</script>';
   }
+}
+if(isset($_POST['kirim'])){
+  $query = "INSERT INTO agen (id_agen, nama, umur, jenis_kelamin, alamat, no_telp, email) VALUES (NULL, '".$_POST['nama']."', '".$_POST['umur']."', '".$_POST['jenis_kelamin']."', '".$_POST['alamat']."', '".$_POST['no_telp']."', '".$_POST['email']."')";
+  $result = mysqli_query(connection(),$query);
+    if($result){
+      echo '<script type="text/javascript">alert("Berhasil")</script>';
+    }else{
+      echo '<script type="text/javascript">alert("Gagal")</script>';
+    }
 }
 ?>  
   <div
@@ -68,6 +78,17 @@ if(isset($_POST['nama'])){
       />
       <div class="valid-feedback">Looks good!</div>
       <div class="invalid-feedback">Please write a name agen.</div>
+    </div>
+    
+    <div class="mb-3">
+    <label for="#" class="form-label">Jenis Kelamin</label>
+    <select id="jenis_kelamin" name="jenis_kelamin" class="form-select" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="laki_laki">Laki-laki</option>
+      <option value="perempuan">Perempuan</option>
+    </select>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Please select a valid sex.</div>
     </div>
 
     <div class="mb-3">
@@ -140,6 +161,6 @@ if(isset($_POST['nama'])){
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" name="kirim">Submit</button>
   </form>
   <!-- Akhir form -->
