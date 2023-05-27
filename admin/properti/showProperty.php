@@ -1,3 +1,6 @@
+<?php
+include('../database/connection.php');
+?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Property Menu</h2>
   <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
@@ -13,6 +16,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">No.</th>
       <th scope="col">Id Properti</th>
       <th scope="col">Nama Properti</th>
       <th scope="col">Tipe Properti</th>
@@ -32,9 +36,11 @@
       $queryShowProperty = "SELECT * FROM properti WHERE nama_properti LIKE '%$search%' OR tipe_properti LIKE '%$search%' OR alamat LIKE '%$search%' OR kota LIKE '%$search%' OR provinsi LIKE '%$search%' OR status LIKE '%$search%'";
     }
     $resultShowProperty = mysqli_query(connection(), $queryShowProperty);
+    $no = 1;
     while ($dataShowProperty = mysqli_fetch_array($resultShowProperty)) {
     ?>
       <tr>
+        <td><?= $no; ?></td>
         <td><?= $dataShowProperty['id_properti'] ?></td>
         <td><?= $dataShowProperty['nama_properti'] ?></td>
         <td><?= $dataShowProperty['tipe_properti'] ?></td>
@@ -47,11 +53,12 @@
       </td> -->
         <td class="d-flex gap-1">
           <a href="properti/detailProperty.php?id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
-          <a href="#"><i class="fa-solid fa-pen"></i></a>
-          <a href="#" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
+          <a href="?page=updateProperty&kode=<?= $dataShowProperty['Id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>
+          <a href="?page=showProperty&kode=<?= $dataShowProperty['Id_properti'];?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
     <?php
+      $no++;
     } ?>
   </tbody>
 </table>
