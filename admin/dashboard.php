@@ -157,17 +157,32 @@ if(empty($_SESSION['logged_in'])){
                 case 'showProperty':
                   include 'properti/showProperty.php';
                   break;
+                case 'detailProperty':
+                  include 'properti/detailProperty.php';
+                  break;
+                case 'updateProperty':
+                  include 'properti/updateProperty.php';
+                  break;
                 case 'addSale':
                   include 'penjualan/addSale.php';
                   break;
                 case 'showSale':
                   include 'penjualan/showSale.php';
                   break;
+                case 'detailSale':
+                  include 'penjualan/detailSale.php';
+                  break;
+                case 'updateSale':
+                  include 'penjualan/updateSale.php';
+                  break;
                 case 'addAgent':
                   include 'agen/addAgent.php';
                   break;
                 case 'showAgent':
                   include 'agen/showAgent.php';
+                  break;
+                case 'updateAgent':
+                  include 'agen/updateAgent.php';
                   break;
                 case 'logout':
                   session_destroy();
