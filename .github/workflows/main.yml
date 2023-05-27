@@ -31,5 +31,5 @@ jobs:
             cd database ;
             if [ -f connection.php ]; then rm connection.php; fi ;
             echo '${{ vars.KONEKSI_MYSQL }}' >> connection.php ;
-            echo 'Deployment completed.'
+            echo 'yahahah hayukk Deployment completed.'
           "
