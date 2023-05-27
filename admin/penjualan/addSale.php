@@ -3,9 +3,9 @@ if(isset($_POST['nama'])){
   $query = "INSERT INTO penjualan VALUES (NULL,'".$_POST['id_properti']."','".$_POST['id_agen']."','".$_POST['nama']."','".$_POST['nik']."','".$_POST['alamat']."','".$_POST['no_telp']."','".$_POST['email']."','".$_POST['tanggal_pesan']."','".$_POST['tanggal_selesai']."','".$_POST['jumlah_dp']."','".$_POST['sisa_bayar']."')";
   $result = mysqli_query(connection(),$query);
   if($result){
-    echo '<h1>berhasil</h1>';
+    echo '<script type="text/javascript">alert("Berhasil")</script>';
   }else{
-    echo '<h1>gagal</h1>';
+    echo '<script type="text/javascript">alert("Gagal")</script>';
   }
 }
 ?>
