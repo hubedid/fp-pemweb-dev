@@ -26,6 +26,8 @@ jobs:
             if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/hubedid/fp-pemweb-dev.git .; fi
             git checkout . ;
             git pull origin master ;
+            if [ -f .env ]; then rm .env; fi ;
+            echo '${{ vars.TES_ENV }}' >> .env ;
             cd database ;
             if [ -f connection.php ]; then rm connection.php; fi ;
             echo '${{ vars.KONEKSI_MYSQL }}' >> connection.php ;
