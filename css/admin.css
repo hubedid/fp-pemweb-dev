@@ -177,3 +177,23 @@ table {
 .login-box i {
   color: white;
 }
+
+/* Detail Penjualan */
+.header-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.header-name i {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4ba3f2;
+  margin-right: 1.5rem;
+}
+
+.header-name h2 {
+  color: #4ba3f2;
+  margin: 0;
+}
