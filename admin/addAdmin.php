@@ -73,7 +73,7 @@ if ($_GET['aksi'] == 'hapus' && $_GET['kode']) {
           <a href="?page=addAdmin&kode=<?= $dataDataAdmin['username']; ?>&aksi=hapus" onclick="return confirm('Apakah anda yakin?')" ;><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
-    <?php $no++;
+    <?php
     } ?>
   </tbody>
 </table>
