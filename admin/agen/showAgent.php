@@ -1,4 +1,6 @@
-
+<?php 
+include('../database/connection.php'); 
+?>
 <div
   class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center"
 >
@@ -27,6 +29,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">No.</th>
       <th scope="col">Id Agen</th>
       <th scope="col">Nama Agen</th>
       <th scope="col">Umur</th>
@@ -50,10 +53,11 @@
       while($dataDataAgen = mysqli_fetch_array($resultDataAgen)){
     ?>
     <tr>
-      <td>1</td>
+      <td><?= $no; ?></td>
+      <td><?= $dataDataAgen['id_agen'] ?></td>
       <td><?= $dataDataAgen['nama'] ?></td>
       <td><?= $dataDataAgen['umur'] ?></td>
-      <td>Laki-Laki</td>
+      <td><?= $dataDataAgen['jenis_kelamin'] ?></td>
       <td><?= $dataDataAgen['alamat'] ?></td>
       <td><?= $dataDataAgen['email'] ?></td>
       <td><?= $dataDataAgen['no_telp'] ?></td>
@@ -61,8 +65,8 @@
         <img src="../image/<?= $dataDataAgen['gambar'] ?>" alt="" style="width: 8rem" />
       </td>
       <td class="d-flex gap-1">
-        <a href="#"><i class="fa-solid fa-pen"></i></a>
-        <a href="#" onclick="return confirm('Apakah anda yakin?');"
+        <a href="?page=updateAgent&kode=<?= $dataDataAgen['id_agen']; ?>"><i class="fa-solid fa-pen"></i></a>
+        <a href="?page=showAgent&aksi=hapus&kode=<?= $dataDataAgen['id_agen']; ?>" onclick="return confirm('Apakah anda yakin?');"
           ><i class="fa-solid fa-trash"></i
         ></a>
       </td>
@@ -70,3 +74,8 @@
     <?php $no++; } ?>
   </tbody>
 </table>
+<?php
+if($_GET['aksi']=='hapus'&&$_GET['kode']){
+  mysqli_query(connection(), "DELETE FROM agen WHERE id_agen = '$_GET[kode]'");
+}
+?>
