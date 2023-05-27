@@ -8,6 +8,9 @@ if(isset($_POST['username'])){
         echo '<h1>gagal</h1>';
     }
 }
+if($_GET['aksi']=='hapus'&&$_GET['kode']){
+  mysqli_query(connection(), "DELETE FROM admin WHERE username = '$_GET[kode]'");
+}
 ?>
   <div
     class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center"
@@ -100,7 +103,7 @@ if(isset($_POST['username'])){
           <img src="../image/agent1.jpg" alt="" style="width: 8rem" />
         </td> -->
         <td class="d-flex gap-1">
-          <a href="#" onclick="return confirm('Apakah anda yakin?');"
+          <a href="?page=addAdmin&kode=<?= $dataDataAdmin['username'];?>&aksi=hapus" onclick="return confirm('Apakah anda yakin?')";
             ><i class="fa-solid fa-trash"></i
           ></a>
         </td>
