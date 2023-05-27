@@ -169,8 +169,8 @@ if(empty($_SESSION['logged_in'])){
                 case 'showSale':
                   include 'penjualan/showSale.php';
                   break;
-                case 'detailSale':
-                  include 'penjualan/detailSale.php';
+                case 'detailPenjualan':
+                  include 'penjualan/detailPenjualan.php';
                   break;
                 case 'updateSale':
                   include 'penjualan/updateSale.php';
