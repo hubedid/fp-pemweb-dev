@@ -1,3 +1,17 @@
+<?php
+$statusDelete = "";
+if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
+  $queryDelete = "DELETE FROM agen WHERE id_agent = '$_GET[kode]'";
+  $resultDelete = mysqli_query(connection(), $queryDelete);
+  if ($resultDelete) {
+    $statusDelete = "ok";
+  } else {
+    $statusDelete = "err";
+  }
+}
+?>
+
+
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Agent Menu</h2>
   <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
@@ -10,6 +24,40 @@
   </form>
 </div>
 <h1 class="heading-1 mt-3 mb-3 fw-bolder">Data Agen</h1>
+
+
+<?php
+// Alert hapus gambar
+if ($statusDelete == "ok") {
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Berhasil!</strong> Menghapus data agen.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+}
+if ($statusDelete == "err") {
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Gagal!</strong> Menghapus data agen.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+}
+
+// Alert update gambar 
+if (@$_GET["statusUpdate"] !== NULL) {
+  $statusUpdate = $_GET["statusUpdate"];
+  if ($statusUpdate == "ok") {
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Berhasil!</strong> Mengubah data agent.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+  } elseif ($statusUpdate == "err") {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Gagal!</strong> Mengubah data agent.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+  }
+}
+?>
+
 <table class="table">
   <thead>
     <tr>
@@ -57,8 +105,3 @@
     } ?>
   </tbody>
 </table>
-<?php
-if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
-  mysqli_query(connection(), "DELETE FROM agen WHERE id_agen = '$_GET[kode]'");
-}
-?>

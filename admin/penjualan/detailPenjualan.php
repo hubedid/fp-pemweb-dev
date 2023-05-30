@@ -52,6 +52,10 @@ include "../../database/connection.php";
             <td><?= $dataDataPenjualan['nama'] ?></td>
           </tr>
           <tr>
+            <th>Nik</th>
+            <td><?= $dataDataPenjualan['nik'] ?></td>
+          </tr>
+          <tr>
             <th>Alamat</th>
             <td><?= $dataDataPenjualan['alamat'] ?></td>
           </tr>

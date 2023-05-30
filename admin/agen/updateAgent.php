@@ -1,36 +1,29 @@
 <?php
-$queryShow = mysqli_query(connection(), "SELECT * FROM agen WHERE id_agen = '$_GET[kode]'");
+$statusUpdate = "";
+$queryShow = mysqli_query(connection(), "SELECT * FROM agen WHERE id_agent = '$_GET[kode]'");
 $resultShow = mysqli_fetch_array($queryShow);
 
 if (isset($_POST['kirim'])) {
   $queryUpdate = "UPDATE agen SET 
   nama = '$_POST[nama]',
+  jenis_kelamin = '$_POST[jenis_kelamin]',
   umur = '$_POST[umur]', 
   alamat = '$_POST[alamat]', 
   no_telp = '$_POST[no_telp]', 
-  email = '$_POST[email]' WHERE id_agen='$_GET[kode]'";
+  email = '$_POST[email]' WHERE id_agent='$_GET[kode]'";
   $resultUpdate = mysqli_query(connection(), $queryUpdate);
   if ($resultUpdate) {
-    echo '<script type="text/javascript">alert("Berhasil")</script>';
+    $statusUpdate = "ok";
   } else {
-    echo '<script type="text/javascript">alert("Berhasil")</script>';
+    $statusUpdate = "err";
   }
+  // header('Location: showAgent.php?statusDelete=' . $statusUpdate);
+  header('Location: ?page=showAgent&statusUpdate=' . $statusUpdate);
 }
 
 ?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Agent Menu</h2>
-  <!-- <form class="d-flex mt-2 mb-2" role="search">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-light" type="submit">
-        Search
-      </button>
-    </form> -->
 </div>
 <h1 class="heading-1 mt-3 mb-3 fw-bolder">Tambah Agen</h1>
 
@@ -41,6 +34,17 @@ if (isset($_POST['kirim'])) {
     <input type="text" class="form-control" id="nama" name="nama" placeholder="name" value="<?php echo $resultShow['nama']; ?>" required />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a name agen.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="#" class="form-label">Jenis Kelamin</label>
+    <select id="jenis_kelamin" name="jenis_kelamin" class="form-select" required>
+      <option selected><?php echo $resultShow['jenis_kelamin']; ?></option>
+      <option value="laki_laki">Laki-laki</option>
+      <option value="perempuan">Perempuan</option>
+    </select>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Please select a valid sex.</div>
   </div>
 
   <div class="mb-3">
@@ -58,7 +62,7 @@ if (isset($_POST['kirim'])) {
   </div>
 
   <div class="mb-3">
-    <label for="#" class="form-label">alamat</label>
+    <label for="#" class="form-label">Alamat</label>
     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="addres" value="<?php echo $resultShow['alamat']; ?>" required />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a addres.</div>

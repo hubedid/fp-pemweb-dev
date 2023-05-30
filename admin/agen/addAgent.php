@@ -1,4 +1,5 @@
 <?php
+$status = "";
 if (isset($_POST['nama'])) {
   $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
   $tipe = $_FILES['gambar']['type'];
@@ -14,12 +15,13 @@ if (isset($_POST['nama'])) {
       $newName = microtime() . '.' . $extractFile['extension'];
       //pindahkan file yang di upload ke directory tujuan
       if (move_uploaded_file($_FILES['gambar']['tmp_name'], $dir . $newName)) {
-        $queryInsert = "INSERT INTO agen (nama, email, umur, alamat, no_telp, gambar) VALUES ('" . $_POST['nama'] . "','" . $_POST['email'] . "','" . $_POST['umur'] . "','" . $_POST['alamat'] . "','" . $_POST['no_telp'] . "','" . $newName . "')";
+        $queryInsert = "INSERT INTO agen (nama, jenis_kelamin, email, umur, alamat, no_telp, gambar) VALUES ('" . $_POST['nama'] . "','" . $_POST['jenis_kelamin'] . "','" . $_POST['email'] . "','" . $_POST['umur'] . "','" . $_POST['alamat'] . "','" . $_POST['no_telp'] . "','" . $newName . "')";
         $resultInsert = mysqli_query(connection(), $queryInsert);
         if ($resultInsert) {
-          echo '<script type="text/javascript">alert("Berhasil")</script>';
+          // echo '<script type="text/javascript">alert("Berhasil")</script>';
+          $status = "ok";
         } else {
-          echo '<script type="text/javascript">alert("Gagal")</script>';
+          $status = "err";
         }
       } else {
         echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
@@ -29,31 +31,28 @@ if (isset($_POST['nama'])) {
     echo '<script type="text/javascript">alert("Tidak ada foto yang dipilih");window.history.go(-1);</script>';
   }
 }
-if (isset($_POST['kirim'])) {
-  $query = "INSERT INTO agen (id_agen, nama, umur, jenis_kelamin, alamat, no_telp, email) VALUES (NULL, '" . $_POST['nama'] . "', '" . $_POST['umur'] . "', '" . $_POST['jenis_kelamin'] . "', '" . $_POST['alamat'] . "', '" . $_POST['no_telp'] . "', '" . $_POST['email'] . "')";
-  $result = mysqli_query(connection(), $query);
-  if ($result) {
-    echo '<script type="text/javascript">alert("Berhasil")</script>';
-  } else {
-    echo '<script type="text/javascript">alert("Gagal")</script>';
-  }
-}
 ?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Agent Menu</h2>
-  <!-- <form class="d-flex mt-2 mb-2" role="search">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-light" type="submit">
-        Search
-      </button>
-    </form> -->
 </div>
 <h1 class="heading-1 mt-3 mb-3 fw-bolder">Tambah Agen</h1>
+
+<!-- Alert sukses insert gambar -->
+<?php
+if ($status == "ok") {
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Berhasil!</strong> Menyimpan data agen.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+}
+if ($status == "err") {
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Gagal!</strong> Menyimpan data agen.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+}
+
+?>
 
 <!-- Form -->
 <form class="form p-4 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
