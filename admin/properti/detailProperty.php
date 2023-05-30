@@ -1,11 +1,5 @@
 <?php
-// ob_start();
-// session_start();
 include "../../database/connection.php";
-// if (empty($_SESSION['logged_in'])) {
-//   header('Location: index.php');
-//   die();
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

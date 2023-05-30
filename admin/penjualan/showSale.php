@@ -49,7 +49,7 @@
       </td> -->
         <td class="d-flex gap-1">
           <a href="penjualan/detailPenjualan.php?id_penjualan=<?php echo $dataDataPenjualan["id_penjualan"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
-          <a href="#"><i class="fa-solid fa-pen"></i></a>
+          <a href="?page=updateSale&kode=<?= $dataDataPenjualan['id_penjualan']; ?> "><i class="fa-solid fa-pen"></i></a>
           <a href="#" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>

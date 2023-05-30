@@ -1,13 +1,12 @@
 <?php
-include('../database/connection.php');
-if(isset($_POST['kirim'])){
-  $query = "INSERT INTO properti (id_agen, nama_properti, tipe_properti, deskripsi, alamat, kota, provinsi, luas_bangunan, kamar_tidur, kamar_mandi, dapur, ruang_keluarga, balkon, harga, status) VALUES ('".$_POST['id_agen']."', '".$_POST['nama_properti']."', '".$_POST['tipe_properti']."', '".$_POST['deskripsi']."', '".$_POST['alamat']."', '".$_POST['kota']."', '".$_POST['provinsi']."', '".$_POST['luas_bangunan']."', '".$_POST['kamar_tidur']."', '".$_POST['kamar_mandi']."', '".$_POST['dapur']."', '".$_POST['ruang_keluarga']."', '".$_POST['balkon']."', '".$_POST['harga']."', '".$_POST['status']."')";
-  $result = mysqli_query(connection(),$query);
-    if($result){
-      echo '<script type="text/javascript">alert("Berhasil")</script>';
-    }else{
-      echo '<script type="text/javascript">alert("Gagal")</script>';
-    }
+if (isset($_POST['kirim'])) {
+  $query = "INSERT INTO properti (id_agen, nama_properti, tipe_properti, deskripsi, alamat, kota, provinsi, luas_bangunan, kamar_tidur, kamar_mandi, dapur, ruang_keluarga, balkon, harga, status) VALUES ('" . $_POST['id_agen'] . "', '" . $_POST['nama_properti'] . "', '" . $_POST['tipe_properti'] . "', '" . $_POST['deskripsi'] . "', '" . $_POST['alamat'] . "', '" . $_POST['kota'] . "', '" . $_POST['provinsi'] . "', '" . $_POST['luas_bangunan'] . "', '" . $_POST['kamar_tidur'] . "', '" . $_POST['kamar_mandi'] . "', '" . $_POST['dapur'] . "', '" . $_POST['ruang_keluarga'] . "', '" . $_POST['balkon'] . "', '" . $_POST['harga'] . "', '" . $_POST['status'] . "')";
+  $result = mysqli_query(connection(), $query);
+  if ($result) {
+    echo '<script type="text/javascript">alert("Berhasil")</script>';
+  } else {
+    echo '<script type="text/javascript">alert("Gagal")</script>';
+  }
 }
 ?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
@@ -198,7 +197,6 @@ if(isset($_POST['kirim'])){
   <div id="formfield">
   </div>
   <div class="col-12">
-    <button type="button" class="btn btn-primary" onclick="addUpload()">add Upload</button>
     <button type="button" class="btn btn-primary" onclick="addUpload()">add Upload</button>
   </div>
   <div class="col-12">

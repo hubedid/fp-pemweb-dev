@@ -8,7 +8,7 @@ if (isset($_POST['username'])) {
     echo '<h1>gagal</h1>';
   }
 }
-if ($_GET['aksi'] == 'hapus' && $_GET['kode']) {
+if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
   mysqli_query(connection(), "DELETE FROM admin WHERE username = '$_GET[kode]'");
 }
 ?>

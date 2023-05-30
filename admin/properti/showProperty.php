@@ -1,6 +1,3 @@
-<?php
-include('../database/connection.php');
-?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Property Menu</h2>
   <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
@@ -53,8 +50,8 @@ include('../database/connection.php');
       </td> -->
         <td class="d-flex gap-1">
           <a href="properti/detailProperty.php?id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
-          <a href="?page=updateProperty&kode=<?= $dataShowProperty['Id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>
-          <a href="?page=showProperty&kode=<?= $dataShowProperty['Id_properti'];?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
+          <a href="?page=updateProperty&kode=<?= $dataShowProperty['id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>
+          <a href="?page=showProperty&kode=<?= $dataShowProperty['id_properti']; ?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
     <?php
