@@ -67,8 +67,8 @@ if ($status == "err") {
     <label for="#" class="form-label">Jenis Kelamin</label>
     <select id="jenis_kelamin" name="jenis_kelamin" class="form-select" required>
       <option selected disabled value="">Choose...</option>
-      <option value="laki_laki">Laki-laki</option>
-      <option value="perempuan">Perempuan</option>
+      <option value="Laki-laki">Laki-laki</option>
+      <option value="Perempuan">Perempuan</option>
     </select>
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please select a valid sex.</div>
