@@ -11,7 +11,7 @@ include "../../database/connection.php";
   <title>Detail Penjualan</title>
 
   <!-- Logo -->
-  <link rel="icon" href="../image/logoatas.png" type="image/x-icon" />
+  <link rel="icon" href="../../image/logoatas.png" type="image/x-icon" />
 
   <!-- Bootrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
@@ -33,8 +33,19 @@ include "../../database/connection.php";
           $id_penjualan = $_GET["id_penjualan"];
           $queryDataPenjualan = "SELECT * FROM penjualan WHERE id_penjualan = $id_penjualan";
           $resultDataPenjualan = mysqli_query(connection(), $queryDataPenjualan);
-          $dataDataPenjualan = mysqli_fetch_array($resultDataPenjualan)
+          $dataDataPenjualan = mysqli_fetch_array($resultDataPenjualan);
+
+          // Data properti
+          $queryDataProperti = "SELECT * FROM properti WHERE id_properti = '{$dataDataPenjualan['id_properti']}'";
+          $resultDataProperti = mysqli_query(connection(), $queryDataProperti);
+          $dataDataProperti = mysqli_fetch_array($resultDataProperti);
+
+          // Data agen
+          $queryDataAgen = "SELECT * FROM agen WHERE id_agent = '{$dataDataPenjualan['id_agen']}'";
+          $resultDataAgen = mysqli_query(connection(), $queryDataAgen);
+          $dataDataAgen = mysqli_fetch_array($resultDataAgen);
           ?>
+
           <tr>
             <th>Id Penjualan</th>
             <td><?= $dataDataPenjualan['id_penjualan'] ?></td>
@@ -44,27 +55,59 @@ include "../../database/connection.php";
             <td><?= $dataDataPenjualan['id_properti'] ?></td>
           </tr>
           <tr>
+            <th>Nama Properti</th>
+            <td><?= $dataDataProperti['nama_properti'] ?></td>
+          </tr>
+          <tr>
+            <th>Tipe Properti</th>
+            <td><?= $dataDataProperti['tipe_properti'] ?></td>
+          </tr>
+          <tr>
+            <th>Alamat Properti</th>
+            <td><?= $dataDataProperti['alamat'] ?></td>
+          </tr>
+          <tr>
+            <th>Kota Properti</th>
+            <td><?= $dataDataProperti['kota'] ?></td>
+          </tr>
+          <tr>
+            <th>Provinsi Properti</th>
+            <td><?= $dataDataProperti['provinsi'] ?></td>
+          </tr>
+          <tr>
             <th>Id Agen</th>
             <td><?= $dataDataPenjualan['id_agen'] ?></td>
           </tr>
           <tr>
-            <th>Nama</th>
+            <th>Nama Agen</th>
+            <td><?= $dataDataAgen['nama'] ?></td>
+          </tr>
+          <tr>
+            <th>Email Agen</th>
+            <td><?= $dataDataAgen['email'] ?></td>
+          </tr>
+          <tr>
+            <th>No Telepon Agen</th>
+            <td><?= $dataDataAgen['no_telp'] ?></td>
+          </tr>
+          <tr>
+            <th>Nama Pembeli</th>
             <td><?= $dataDataPenjualan['nama'] ?></td>
           </tr>
           <tr>
-            <th>Nik</th>
+            <th>Nik Pembeli</th>
             <td><?= $dataDataPenjualan['nik'] ?></td>
           </tr>
           <tr>
-            <th>Alamat</th>
+            <th>Alamat Pembeli</th>
             <td><?= $dataDataPenjualan['alamat'] ?></td>
           </tr>
           <tr>
-            <th>No Telepon</th>
+            <th>No Telepon Pembeli</th>
             <td><?= $dataDataPenjualan['no_telp'] ?></td>
           </tr>
           <tr>
-            <th>Email</th>
+            <th>Email Pembeli</th>
             <td><?= $dataDataPenjualan['email'] ?></td>
           </tr>
           <tr>

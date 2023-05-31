@@ -39,7 +39,7 @@ if (isset($_POST['kirim'])) {
   <div class="mb-3">
     <label for="#" class="form-label">Jenis Kelamin</label>
     <select id="jenis_kelamin" name="jenis_kelamin" class="form-select" required>
-      <option selected><?php echo $resultShow['jenis_kelamin']; ?></option>
+      <option selected value="<?php echo $resultShow['jenis_kelamin']; ?>"><?php echo $resultShow['jenis_kelamin']; ?></option>
       <option value="Laki-laki">Laki-laki</option>
       <option value="Perempuan">Perempuan</option>
     </select>

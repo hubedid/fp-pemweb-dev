@@ -1,29 +1,34 @@
 <?php
+$status = "";
 if (isset($_POST['nama'])) {
   $query = "INSERT INTO penjualan VALUES (NULL,'" . $_POST['id_properti'] . "','" . $_POST['id_agen'] . "','" . $_POST['nama'] . "','" . $_POST['nik'] . "','" . $_POST['alamat'] . "','" . $_POST['no_telp'] . "','" . $_POST['email'] . "','" . $_POST['tanggal_pesan'] . "','" . $_POST['tanggal_selesai'] . "','" . $_POST['jumlah_dp'] . "','" . $_POST['sisa_bayar'] . "')";
   $result = mysqli_query(connection(), $query);
   if ($result) {
-    echo '<script type="text/javascript">alert("Berhasil")</script>';
+    $status = "ok";
   } else {
-    echo '<script type="text/javascript">alert("Gagal")</script>';
+    $status = "err";
   }
 }
 ?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Sale Menu</h2>
-  <!-- <form class="d-flex mt-2 mb-2" role="search">
-    <input
-      class="form-control me-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button class="btn btn-outline-light" type="submit">
-      Search
-    </button>
-  </form> -->
 </div>
 <h1 class="heading-1 mt-3 mb-5 fw-bolder">Tambah Penjualan</h1>
+
+<!-- Alert insert -->
+<?php
+if ($status == "ok") {
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Berhasil!</strong> Menyimpan data penjualan.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+} else if ($status == "err") {
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Gagal!</strong> Menyimpan data penjualan.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+}
+?>
 
 <!-- Form -->
 <form class="form row g-3 p-4 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
@@ -65,7 +70,7 @@ if (isset($_POST['nama'])) {
 
   <div class="col-md-6">
     <label for="#" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="nama" name="nama" required placeholder="name pembeli" />
+    <input type="text" class="form-control" id="nama" name="nama" required placeholder="nama pembeli" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a name.</div>
   </div>
@@ -79,49 +84,49 @@ if (isset($_POST['nama'])) {
 
   <div class="col-md-12">
     <label for="#" class="form-label">Alamat</label>
-    <input type="text" class="form-control" id="alamat" name="alamat" required placeholder="addres" />
+    <input type="text" class="form-control" id="alamat" name="alamat" required placeholder="alamat pembeli" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a addres.</div>
   </div>
 
   <div class="col-md-6">
     <label for="#" class="form-label">No Telepon</label>
-    <input type="number" class="form-control" id="no_telp" name="no_telp" required placeholder="nomor telepon" />
+    <input type="number" class="form-control" id="no_telp" name="no_telp" required placeholder="nomor telepon pembeli" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a phoner number.</div>
   </div>
 
   <div class="col-md-6">
     <label for="#" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email" required placeholder="province" />
+    <input type="email" class="form-control" id="email" name="email" required placeholder="email pembeli" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a email.</div>
   </div>
 
   <div class="col-md-6">
     <label for="#" class="form-label">Tanggal Pesan</label>
-    <input type="date" class="form-control" id="tanggal_pesan" name="tanggal_pesan" required placeholder="Luas bangunan" />
+    <input type="date" class="form-control" id="tanggal_pesan" name="tanggal_pesan" required placeholder="tanggal beli" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a date order.</div>
   </div>
 
   <div class="col-md-6">
     <label for="#" class="form-label">Tanggal Selesai</label>
-    <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required placeholder="Luas bangunan" />
+    <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required placeholder="tanggal selesai" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a date finish.</div>
   </div>
 
   <div class="col-md-6">
     <label for="#" class="form-label">Jumlah Dp</label>
-    <input type="number" class="form-control" id="jumlah_dp" name="jumlah_dp" required placeholder="Dp" />
+    <input type="number" class="form-control" id="jumlah_dp" name="jumlah_dp" required placeholder="jumlah dp" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a Dp.</div>
   </div>
 
   <div class="col-md-6">
     <label for="#" class="form-label">Sisa Bayar</label>
-    <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" required placeholder="Sisa bayar" />
+    <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" required placeholder="sisa bayar" />
     <div class="valid-feedback">Looks good!</div>
     <div class="invalid-feedback">Please write a remaining pay.</div>
   </div>

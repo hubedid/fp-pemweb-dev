@@ -18,7 +18,6 @@ if (isset($_POST['nama'])) {
         $queryInsert = "INSERT INTO agen (nama, jenis_kelamin, email, umur, alamat, no_telp, gambar) VALUES ('" . $_POST['nama'] . "','" . $_POST['jenis_kelamin'] . "','" . $_POST['email'] . "','" . $_POST['umur'] . "','" . $_POST['alamat'] . "','" . $_POST['no_telp'] . "','" . $newName . "')";
         $resultInsert = mysqli_query(connection(), $queryInsert);
         if ($resultInsert) {
-          // echo '<script type="text/javascript">alert("Berhasil")</script>';
           $status = "ok";
         } else {
           $status = "err";
@@ -37,7 +36,7 @@ if (isset($_POST['nama'])) {
 </div>
 <h1 class="heading-1 mt-3 mb-3 fw-bolder">Tambah Agen</h1>
 
-<!-- Alert sukses insert gambar -->
+<!-- Alert insert -->
 <?php
 if ($status == "ok") {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
