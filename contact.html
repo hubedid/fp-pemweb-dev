@@ -21,7 +21,7 @@
         <a href="aboutMe.html">about me</a>
         <a href="contact.html">contact</a>
         <a href="property.html">property</a>
-        <a href="agent.html">agent</a>
+        <a href="agent.php">agent</a>
       </div>
     </nav>
     <!-- Akhir navbar -->
@@ -34,13 +34,14 @@
       <div class="contact-box-2">
         <h2>Hubungi kami</h2>
 
-        <form method="" action="">
+        <form method="post" action="https://formspree.io/f/mayzgwql">
           <div class="email-form">
             <div class="name">
               <input
                 type="text"
                 class="form-input"
                 id="name"
+                name="name"
                 placeholder="masukkan nama anda"
               />
             </div>
@@ -49,6 +50,7 @@
                 type="email"
                 class="form-input"
                 id="email"
+                name="email"
                 placeholder="masukkan email anda"
               />
             </div>
@@ -57,6 +59,7 @@
                 type="text"
                 class="form-input"
                 id="phone"
+                name="phone"
                 placeholder="masukkan nomor hp anda"
               />
             </div>
@@ -65,6 +68,7 @@
                 type="text"
                 class="form-input"
                 id="subjek"
+                name="subjek"
                 placeholder="masukkan subjek"
               />
             </div>
@@ -72,7 +76,8 @@
           <div class="message">
             <textarea
               class="form-input"
-              id="exampleFormControlTextarea1"
+              id="massage"
+              name="massage"
               rows="3"
               placeholder="masukkan pesan anda"
             ></textarea>

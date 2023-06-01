@@ -6,7 +6,7 @@
     <button class="btn btn-outline-light" type="submit">
       Search
     </button>
-    <?= isset($_GET['search']) ? '<a class="btn btn-outline-dark"  href="?page=showProperty">Reset</a>' : '' ?>
+    <?= isset($_GET['search']) ? '<a class="btn btn-outline-info ms-2"  href="?page=showProperty">Reset</a>' : '' ?>
   </form>
 </div>
 <h1 class="heading-1 mt-3 mb-3 fw-bolder">Data Properti</h1>

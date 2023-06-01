@@ -74,7 +74,7 @@ if (@$_GET["statusUpdate"] !== NULL) {
   </thead>
   <tbody id="table-body">
     <?php
-    $queryDataAgen = "select * from agen";
+    $queryDataAgen = "SELECT * FROM agen";
     if (isset($_GET['search'])) {
       $search = mysqli_real_escape_string(connection(), $_GET['search']);
       $queryDataAgen = "select * from agen where nama like '%$search%' or email like '%$search%' or no_telp like '%$search%' or alamat like '%$search%' or umur like '%$search%'";

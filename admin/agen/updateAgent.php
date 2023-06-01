@@ -17,7 +17,6 @@ if (isset($_POST['kirim'])) {
   } else {
     $statusUpdate = "err";
   }
-  // header('Location: showAgent.php?statusDelete=' . $statusUpdate);
   header('Location: ?page=showAgent&statusUpdate=' . $statusUpdate);
 }
 
