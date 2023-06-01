@@ -5,7 +5,7 @@ function connection()
     $dbServer = 'localhost';
     $dbPort = 3306;
     $dbUser = 'root';
-    $dbPass = 'Hubed.com1';
+    $dbPass = '';
     $dbName = 'bayview';
 
     $conn = mysqli_connect($dbServer, $dbUser, $dbPass, $dbName, $dbPort);
