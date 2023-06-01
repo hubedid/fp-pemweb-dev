@@ -23,7 +23,7 @@ if (isset($_POST['nama'])) {
           $status = "err";
         }
       } else {
-        // echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
+        echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
       }
     }
   } else {

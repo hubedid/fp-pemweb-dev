@@ -11,17 +11,6 @@ if (isset($_POST['kirim'])) {
 ?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Property Menu</h2>
-  <!-- <form class="d-flex mt-2 mb-2" role="search">
-    <input
-      class="form-control me-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button class="btn btn-outline-light" type="submit">
-      Search
-    </button>
-  </form> -->
 </div>
 <h1 class="heading-1 mt-3 mb-5 fw-bolder">Tambah Properti</h1>
 

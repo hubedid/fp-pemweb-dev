@@ -21,7 +21,6 @@
       <th scope="col">Kota</th>
       <th scope="col">Provinsi</th>
       <th scope="col">Status</th>
-      <!-- <th scope="col">Foto</th> -->
       <th scope="col">Aksi</th>
     </tr>
   </thead>
@@ -45,9 +44,6 @@
         <td><?= $dataShowProperty['kota'] ?></td>
         <td><?= $dataShowProperty['provinsi'] ?></td>
         <td><?= $dataShowProperty['status'] ?></td>
-        <!-- <td>
-        <img src="../image/agent1.jpg" alt="" style="width: 8rem" />
-      </td> -->
         <td class="d-flex gap-1">
           <a href="properti/detailProperty.php?id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
           <a href="?page=updateProperty&kode=<?= $dataShowProperty['id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>

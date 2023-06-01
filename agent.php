@@ -58,40 +58,6 @@ include('database/connection.php');
         </div>
       <?php }
       ?>
-
-      <!-- <div class="card">
-          <div
-            class="property-content-1"
-            style="
-              background-image: url('image/agent2.jpg');
-              background-size: cover;
-              background-position: center;
-            "
-          ></div>
-          <div class="property-content-2 agent-box">
-            <h4>Ryan Mitchell</h4>
-            <div class="addres-box">
-              <h5>agen - properti</h5>
-            </div>
-          </div>
-        </div> -->
-
-      <!-- <div class="card">
-          <div
-            class="property-content-1"
-            style="
-              background-image: url('image/agent3.jpg');
-              background-size: cover;
-              background-position: center;
-            "
-          ></div>
-          <div class="property-content-2 agent-box">
-            <h4>Stephanie Carter</h4>
-            <div class="addres-box">
-              <h5>agen - properti</h5>
-            </div>
-          </div>
-        </div> -->
     </div>
   </div>
   <!-- Akhir agent -->
