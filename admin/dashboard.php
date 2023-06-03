@@ -22,14 +22,14 @@ if (empty($_SESSION['logged_in'])) {
   <!-- Bootrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/admin.css" />
+  <<<<<<< HEAD <!-- CSS -->
+    <link rel="stylesheet" href="../css/admin.css" />
 </head>
 
 <body>
   <div class="row gx-0">
     <!-- Sidebar -->
-    <div class="sidebar col-2 bg-primary sticky-top" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+    <div class="sidebar col-2 bg-primary sticky-top">
       <div class="image-box d-flex justify-content-center align-items-center p-4">
         <img src="../image/logo2.png" alt="logo" />
       </div>
@@ -44,7 +44,7 @@ if (empty($_SESSION['logged_in'])) {
             <a class="menu nav-link p-2" aria-current="page" href="?page=addAdmin" style="<?= isset($_GET['page']) && $_GET['page'] == 'addAdmin' ? 'background-color: white; color: #0275d8' : '' ?>"><i class="fa-solid fa-user-gear me-3 ps-2"></i>Admin</a>
           </li>
           <li class="nav-item dropdown w-100 mb-2">
-            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addProperty' || $_GET['page'] == 'showProperty') ? 'background-color: white; color: #0275d8' : '' ?>">
+            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addProperty' || $_GET['page'] == 'showProperty' || $_GET['page'] == 'detailProperty') ? 'background-color: white; color: #0275d8' : '' ?>">
               <i class="fa-solid fa-building-circle-check me-3 ps-2"></i>Property
             </a>
             <ul class="dropdown-menu w-100">
@@ -57,7 +57,7 @@ if (empty($_SESSION['logged_in'])) {
             </ul>
           </li>
           <li class="nav-item dropdown w-100 mb-2">
-            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addSale' || $_GET['page'] == 'showSale') ? 'background-color: white; color: #0275d8' : '' ?>">
+            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addSale' || $_GET['page'] == 'showSale' || $_GET['page'] == 'detailPenjualan') ? 'background-color: white; color: #0275d8' : '' ?>">
               <i class="fa-solid fa-cart-shopping me-3 ps-2"></i>Sale
             </a>
             <ul class="dropdown-menu w-100">

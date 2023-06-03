@@ -1,9 +1,45 @@
 <?php
-if (isset($_POST['kirim'])) {
+if (isset($_POST['nama_properti'])) {
   $query = "INSERT INTO properti (id_agen, nama_properti, tipe_properti, deskripsi, alamat, kota, provinsi, luas_bangunan, kamar_tidur, kamar_mandi, dapur, ruang_keluarga, balkon, harga, status) VALUES ('" . $_POST['id_agen'] . "', '" . $_POST['nama_properti'] . "', '" . $_POST['tipe_properti'] . "', '" . $_POST['deskripsi'] . "', '" . $_POST['alamat'] . "', '" . $_POST['kota'] . "', '" . $_POST['provinsi'] . "', '" . $_POST['luas_bangunan'] . "', '" . $_POST['kamar_tidur'] . "', '" . $_POST['kamar_mandi'] . "', '" . $_POST['dapur'] . "', '" . $_POST['ruang_keluarga'] . "', '" . $_POST['balkon'] . "', '" . $_POST['harga'] . "', '" . $_POST['status'] . "')";
   $result = mysqli_query(connection(), $query);
   if ($result) {
+    $querySearchUpload = "SELECT * from properti WHERE nama_properti = '" . $_POST['nama_properti'] . "' AND kota = '" . $_POST['kota'] . "' AND provinsi = '" . $_POST['provinsi'] . "' AND harga = '" . $_POST['harga'] . "' AND status = '" . $_POST['status'] . "'";
+    $resultSearchUpload = mysqli_query(connection(), $querySearchUpload);
+    $rowSearchUpload = mysqli_fetch_array($resultSearchUpload);
+    if($rowSearchUpload['id_properti'] != null){
+      foreach ($_FILES as $file) {
+        $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
+        $tipe = $file['type'];
+        $size = $file['size'];
+        if (is_uploaded_file($file['tmp_name'])) { //cek apakah ada file yang di upload
+          if (!in_array(($tipe), $ext)) { //cek ekstensi file
+            echo '<script type="text/javascript">alert("Format gambar tidak diperbolehkan!");window.history.go(-1)</script>';
+          } else if ($size > 2097152) {
+            echo '<script type="text/javascript">alert("Ukuran gambar terlalu besar!");window.history.go(-1);</script>';
+          } else {
+            $extractFile = pathinfo($file['name']);
+            $dir         = "../image/";
+            $newName = microtime() . '.' . $extractFile['extension'];
+            //pindahkan file yang di upload ke directory tujuan
+            if (move_uploaded_file($file['tmp_name'], $dir . $newName)) {
+              $queryUpload = "INSERT INTO gambar_properti (id_properti, gambar) VALUES ('" . $rowSearchUpload['id_properti'] . "', '" . $newName . "')";
+              $resultUpload = mysqli_query(connection(), $queryUpload);
+              if ($resultUpload) {
+                continue;
+              } else {
+                echo '<script type="text/javascript">alert("Error Upload Gambar")</script>';
+              }
+            } else {
+              echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
+            }
+          }
+        } else {
+          echo '<script type="text/javascript">alert("Tidak ada foto yang dipilih");window.history.go(-1);</script>';
+        }
+      }
+    }
     echo '<script type="text/javascript">alert("Berhasil")</script>';
+    echo '<script type="text/javascript">window.location.href="?page=showProperty"</script>';
   } else {
     echo '<script type="text/javascript">alert("Gagal")</script>';
   }
@@ -177,7 +213,8 @@ if (isset($_POST['kirim'])) {
 
   <div class="col-12">
     <label for="#" class="form-label">Gambar 1</label>
-    <input type="file" class="form-control" id="#" name="gambar1" aria-label="file example" required />
+    <div id="imagePreviewGambar1"></div>
+    <input type="file" class="form-control" id="gambar1" name="gambar1" onchange="return fileValidation('gambar1', 'imagePreviewGambar1')" aria-label="file example" required />
     <div class="invalid-feedback">
       Example invalid form file feedback
     </div>
@@ -186,7 +223,8 @@ if (isset($_POST['kirim'])) {
   <div id="formfield">
   </div>
   <div class="col-12">
-    <button type="button" class="btn btn-primary" onclick="addUpload()">add Upload</button>
+    <button type="button" class="btn btn-primary" onclick="addUpload()">Add Upload</button>
+    <button type="button" class="btn btn-primary" onclick="removeUpload()">Remove Upload</button>
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -195,13 +233,49 @@ if (isset($_POST['kirim'])) {
 <!-- Akhir form -->
 <script>
   let no = 2;
-
+  let max = 10;
   function addUpload() {
-    var form = '<div class="col-12">' +
-      '<label for="#" class="form-label">Gambar ' + no + '</label>' +
-      '<input type="file" class="form-control"id="#"name="gambar' + no + '" aria-label="file example" required />' +
-      '<div class="invalid-feedback">Example invalid form file feedback</div></div>';
-    document.getElementById('formfield').insertAdjacentHTML("beforeend", form);
-    no++;
+    if(no <= max){
+      var form = '<div class="col-12">' +
+        '<label for="#" class="form-label">Gambar ' + no + '</label>' +
+        '<div id="imagePreviewGambar' + no + '"></div>'+
+        '<input type="file" class="form-control" id="gambar' + no + '" onchange="return fileValidation(\'gambar' + no + '\', \'imagePreviewGambar' + no + '\')" name="gambar' + no + '" aria-label="file example" required />' +
+        '<div class="invalid-feedback">Example invalid form file feedback</div></div>';
+      document.getElementById('formfield').insertAdjacentHTML("beforeend", form);
+      no++;
+    }else{
+      alert('Maximal upload 10');
+    }
   }
+
+  function removeUpload() {
+    if(no > 2) {
+      no--;
+      document.getElementById('formfield').removeChild(document.getElementById('formfield').lastChild);
+    }else{
+      alert('Minimal upload 1');
+    }
+  }
+
+  function fileValidation(id, idPreview) {
+    var fileInput = document.getElementById(id);
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+      
+    if (!allowedExtensions.exec(filePath)) {
+      alert('Invalid file type');
+      fileInput.value = '';
+      return false;
+    }else{
+      if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById(idPreview).innerHTML =
+            '<img src="' + e.target.result
+            + '" width="200px" />';
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    }
+  } 
 </script>

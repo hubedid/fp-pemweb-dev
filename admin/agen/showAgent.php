@@ -1,13 +1,26 @@
 <?php
 $statusDelete = "";
-if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
-
-  $queryDelete = "DELETE FROM agen WHERE id_agent = '$_GET[kode]'";
-  $resultDelete = mysqli_query(connection(), $queryDelete);
-  if ($resultDelete) {
-    $statusDelete = "ok";
-  } else {
-    $statusDelete = "err";
+if (isset($_GET['kode'])) {
+  $queryDeletePenjualan = "DELETE FROM penjualan WHERE id_agen = '$_GET[kode]'";
+  $resultDeletePenjualan = mysqli_query(connection(),$queryDeletePenjualan);
+  if($resultDeletePenjualan){
+    $querySearchProperty = "SELECT * FROM properti WHERE id_agen = '$_GET[kode]'";
+    $resultSearchProperty = mysqli_query(connection(),$querySearchProperty);
+    while($dataSearchProperty = mysqli_fetch_array($resultSearchProperty)){
+      $queryDeleteGambar = "DELETE FROM gambar_properti WHERE id_properti = '$dataSearchProperty[id_properti]'";
+      $resultDeleteGambar = mysqli_query(connection(),$queryDeleteGambar);
+    }
+    $queryDeleteProperty = "DELETE FROM properti WHERE id_agen = '$_GET[kode]'";
+    $resultDeleteProperty = mysqli_query(connection(),$queryDeleteProperty);
+    if($resultDeleteProperty){
+      $queryDelete = "DELETE FROM agen WHERE id_agent = '$_GET[kode]'";
+      $resultDelete = mysqli_query(connection(), $queryDelete);
+      if($resultDelete){
+        echo "<h3>Hapus Berhasil</h3>";
+      } else {
+        echo "<h3>Hapus Gagal</h3>";
+      }
+    }
   }
 }
 ?>
@@ -97,7 +110,7 @@ if (@$_GET["statusUpdate"] !== NULL) {
         </td>
         <td class="d-flex gap-1">
           <a href="?page=updateAgent&kode=<?= $dataDataAgen['id_agent']; ?>"><i class="fa-solid fa-pen"></i></a>
-          <a href="?page=showAgent&aksi=hapus&kode=<?= $dataDataAgen['id_agent']; ?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
+          <a href="?page=showAgent&kode=<?= $dataDataAgen['id_agent']; ?>" onclick="return confirm('Menghapus properti akan menghapus data properti dan penjualan dengan agen yang berkaitan. Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
     <?php $no++;

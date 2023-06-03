@@ -1,13 +1,12 @@
 <?php
 $statusDelete = "";
-if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
-
+if (isset($_GET['kode'])) {
   $queryDelete = "DELETE FROM penjualan WHERE id_penjualan = '$_GET[kode]'";
   $resultDelete = mysqli_query(connection(), $queryDelete);
   if ($resultDelete) {
-    $statusDelete = "ok";
+    echo "<h3>Hapus Berhasil</h3>";
   } else {
-    $statusDelete = "err";
+    echo "<h3>Hapus Gagal</h3>";
   }
 }
 ?>
@@ -93,9 +92,9 @@ if (@$_GET["statusUpdate"] !== NULL) {
         <td><?= $dataDataPenjualan['tgl_pesan'] ?></td>
         <td><?= $dataDataPenjualan['tgl_selesai'] ?></td>
         <td class="d-flex gap-1">
-          <a href="penjualan/detailPenjualan.php?id_penjualan=<?php echo $dataDataPenjualan["id_penjualan"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
+          <a href="?page=detailPenjualan&id_penjualan=<?php echo $dataDataPenjualan["id_penjualan"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
           <a href="?page=updateSale&kode=<?= $dataDataPenjualan['id_penjualan']; ?> "><i class="fa-solid fa-pen"></i></a>
-          <a href="?page=showSale&aksi=hapus&kode=<?= $dataDataPenjualan['id_penjualan']; ?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
+          <a href="?page=showSale&kode=<?= $dataDataPenjualan['id_penjualan']; ?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
     <?php $no++;
