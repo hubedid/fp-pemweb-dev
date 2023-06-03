@@ -10,17 +10,15 @@ if (isset($_GET['kode'])) {
       $queryDeleteGambar = "DELETE FROM gambar_properti WHERE id_properti = '$dataSearchProperty[id_properti]'";
       $resultDeleteGambar = mysqli_query(connection(),$queryDeleteGambar);
     }
-    if($resultDeleteGambar){
-      $queryDeleteProperty = "DELETE FROM properti WHERE id_agen = '$_GET[kode]'";
-      $resultDeleteProperty = mysqli_query(connection(),$queryDeleteProperty);
-      if($resultDeleteProperty){
-        $queryDelete = "DELETE FROM agen WHERE id_agent = '$_GET[kode]'";
-        $resultDelete = mysqli_query(connection(), $queryDelete);
-        if($resultDelete){
-          echo "<h3>Hapus Berhasil</h3>";
-        } else {
-          echo "<h3>Hapus Gagal</h3>";
-        }
+    $queryDeleteProperty = "DELETE FROM properti WHERE id_agen = '$_GET[kode]'";
+    $resultDeleteProperty = mysqli_query(connection(),$queryDeleteProperty);
+    if($resultDeleteProperty){
+      $queryDelete = "DELETE FROM agen WHERE id_agent = '$_GET[kode]'";
+      $resultDelete = mysqli_query(connection(), $queryDelete);
+      if($resultDelete){
+        echo "<h3>Hapus Berhasil</h3>";
+      } else {
+        echo "<h3>Hapus Gagal</h3>";
       }
     }
   }
