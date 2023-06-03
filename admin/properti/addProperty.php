@@ -25,7 +25,7 @@ if (isset($_POST['nama_properti'])) {
               $queryUpload = "INSERT INTO gambar_properti (id_properti, gambar) VALUES ('" . $rowSearchUpload['id_properti'] . "', '" . $newName . "')";
               $resultUpload = mysqli_query(connection(), $queryUpload);
               if ($resultUpload) {
-                echo '<script type="text/javascript">alert("Berhasil")</script>';
+                continue;
               } else {
                 echo '<script type="text/javascript">alert("Error Upload Gambar")</script>';
               }
@@ -38,6 +38,8 @@ if (isset($_POST['nama_properti'])) {
         }
       }
     }
+    echo '<script type="text/javascript">alert("Berhasil")</script>';
+    echo '<script type="text/javascript">window.location.href="?page=showProperty"</script>';
   } else {
     echo '<script type="text/javascript">alert("Gagal")</script>';
   }

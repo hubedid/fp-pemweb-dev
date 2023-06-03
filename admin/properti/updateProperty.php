@@ -277,7 +277,7 @@ if (isset($_POST['nama_properti'])) {
   <div class="col-12">
     <label for="#" class="form-label">Gambar <?= $no ?></label>
     <div id="imagePreviewGambar<?= $no ?>">
-      <img src="../../image/<?= $resultGambar['gambar'] ?>" alt="image preview" style="width: 200px;" />
+      <img src="../image/<?= $resultGambar['gambar'] ?>" alt="image preview" style="width: 200px;" />
       <a class="btn btn-danger" href="?page=updateProperty&kode=<?= $_GET['kode'] ?>&hapusGambar=<?= $resultGambar['gambar'] ?>" onclick="return confirm('This action cannot be undone')">Hapus Gambar</a>
     </div>
     <div id="currentDivGambar<?= $no ?>"></div>
