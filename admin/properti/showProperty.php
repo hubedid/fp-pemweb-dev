@@ -1,14 +1,14 @@
 <?php
-if(isset($_GET['kode'])){
+if (isset($_GET['kode'])) {
   $queryDeletePenjualan = "DELETE FROM penjualan WHERE id_properti = '$_GET[kode]'";
-  $resultDeletePenjualan = mysqli_query(connection(),$queryDeletePenjualan);
-  if($resultDeletePenjualan){
+  $resultDeletePenjualan = mysqli_query(connection(), $queryDeletePenjualan);
+  if ($resultDeletePenjualan) {
     $queryDeleteGambar = "DELETE FROM gambar_properti WHERE id_properti = '$_GET[kode]'";
-    $resultDeleteGambar = mysqli_query(connection(),$queryDeleteGambar);
-    if($resultDeleteGambar){
+    $resultDeleteGambar = mysqli_query(connection(), $queryDeleteGambar);
+    if ($resultDeleteGambar) {
       $queryDeleteProperty = "DELETE FROM properti WHERE id_properti = '$_GET[kode]'";
-      $resultDeleteProperty = mysqli_query(connection(),$queryDeleteProperty);
-      if($resultDeleteProperty){
+      $resultDeleteProperty = mysqli_query(connection(), $queryDeleteProperty);
+      if ($resultDeleteProperty) {
         echo "<script>alert('Data berhasil dihapus!')</script>";
         echo "<script>location='?page=showProperty'</script>";
       }
@@ -28,6 +28,25 @@ if(isset($_GET['kode'])){
   </form>
 </div>
 <h1 class="heading-1 mt-3 mb-3 fw-bolder">Data Properti</h1>
+
+<?php
+// Alert update
+if (@$_GET["statusUpdate"] !== NULL) {
+  $statusUpdate = $_GET["statusUpdate"];
+  if ($statusUpdate == "ok") {
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Berhasil!</strong> Mengubah data property.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+  } else {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Gagal!</strong> Mengubah data property.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+  }
+}
+?>
+
 <table class="table">
   <thead>
     <tr>

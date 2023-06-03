@@ -6,6 +6,8 @@ if (isset($_SESSION['logged_in'])) {
     header('Location: dashboard.php');
     die();
 }
+
+$status = "";
 // cek post
 if (isset($_POST['username'])) {
     //cek username
@@ -21,33 +23,11 @@ if (isset($_POST['username'])) {
             );
             header('Location: dashboard.php');
         } else {
-            echo '<h1>user / pass salah</h1>';
+            $status = "err";
         }
     } else {
-        echo '<h1>user / pass salah</h1>';
+        $status = "err";
     }
-    // while($dataCekUser = mysqli_fetch_array($resultCekUser)){
-    //     if($dataCekUser['username'] == $_POST['username']){
-    //         if(password_verify($_POST['password'], $dataCekUser['password'])){
-    //             $_SESSION['logged_in'] = array(
-    //                 'id' => $dataCekUser['id_admin'],
-    //                 'user' => $dataCekUser['username'],
-    //             );
-    //             header('Location: dashboard.html');
-    //         }else{
-    //             echo '<h1>user / pass salah</h1>';
-    //         }
-    //         echo '<h1>user / pass salah</h1>';
-    //     }else{
-    //         echo '<h1>user / pass salah</h1>';
-    //     }
-    // }
-    // if(($_POST['user'] == 'admin' && $_POST['password'] == 'admin') || ($_POST['user'] == 'user' && $_POST['password'] == 'user')){
-    //     setcookie('user', $_POST['user'], time()+60);
-    //     header('Location: home.php');
-    // }else{
-    //     echo '<h1>user / pass salah</h1>';
-    // }
 }
 ?>
 <!DOCTYPE html>
@@ -89,6 +69,14 @@ if (isset($_POST['username'])) {
                         <button type="submit" class="btn btn-primary w-50">Login</button>
                     </div>
                 </form>
+                <?php
+                if ($status == "err") {
+                    echo '<div class="alert alert-danger alert-dismissible fade show pb-0 mt-3" role="alert">
+                                <p><strong>Username</strong> atau <strong>Password</strong>  salah!</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -2,15 +2,16 @@
 $queryShow = mysqli_query(connection(), "SELECT * FROM properti WHERE id_properti = '$_GET[kode]'");
 $resultShow = mysqli_fetch_array($queryShow);
 
-if(isset($_GET['hapusGambar'])){
-  $querySearchGambar = mysqli_query(connection() ,"SELECT * FROM gambar_properti WHERE gambar = '$_GET[hapusGambar]'");
+$status = "";
+if (isset($_GET['hapusGambar'])) {
+  $querySearchGambar = mysqli_query(connection(), "SELECT * FROM gambar_properti WHERE gambar = '$_GET[hapusGambar]'");
   $resultSearchGambar = mysqli_fetch_array($querySearchGambar);
   $queryHapusGambar = "DELETE FROM gambar_properti WHERE id_gambar_properti = '$resultSearchGambar[id_gambar_properti]'";
   $resultHapusGambar = mysqli_query(connection(), $queryHapusGambar);
-  if($resultHapusGambar){
-    unlink("../image/". $resultSearchGambar['gambar']);
+  if ($resultHapusGambar) {
+    unlink("../image/" . $resultSearchGambar['gambar']);
   }
-  header('Location: ?page=updateProperty&kode='.$_GET['kode']);
+  header('Location: ?page=updateProperty&kode=' . $_GET['kode']);
 }
 
 if (isset($_POST['nama_properti'])) {
@@ -32,10 +33,12 @@ if (isset($_POST['nama_properti'])) {
   harga = '$_POST[harga]' Where id_properti='$_GET[kode]'";
   $resultUpdate = mysqli_query(connection(), $queryUpdate);
   if ($resultUpdate) {
+    $status = "ok";
+    header('Location: ?page=showProperty&statusUpdate=' . $status);
     foreach ($_FILES as $key => $file) {
-      if(is_uploaded_file($file['tmp_name'])){
+      if (is_uploaded_file($file['tmp_name'])) {
         foreach ($_POST as $key => $value) {
-          if(preg_match("/currentGambar/", $key)){
+          if (preg_match("/currentGambar/", $key)) {
             $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
             $tipe = $file['type'];
             $size = $file['size'];
@@ -50,11 +53,12 @@ if (isset($_POST['nama_properti'])) {
                 $newName = microtime() . '.' . $extractFile['extension'];
                 //pindahkan file yang di upload ke directory tujuan
                 if (move_uploaded_file($file['tmp_name'], $dir . $newName)) {
-                  unlink("../image/". $value);
+                  unlink("../image/" . $value);
                   $queryUpdateGambar = "UPDATE gambar_properti SET gambar = '$newName' WHERE gambar = '$value' ";
                   $resultUpdateGambar = mysqli_query(connection(), $queryUpdateGambar);
                   if ($resultUpdateGambar) {
-                    echo '<script type="text/javascript">alert("Berhasil");location.replace("?page=showProperty");</script>';
+                    $status = "ok";
+                    header('Location: ?page=showProperty&statusUpdate=' . $status);
                   } else {
                     echo '<script type="text/javascript">alert("Error Query Gambar");window.history.go(-1);</script>';
                   }
@@ -67,7 +71,7 @@ if (isset($_POST['nama_properti'])) {
             }
           }
         }
-        if(!preg_match("/currentGambar/", $key)){
+        if (!preg_match("/currentGambar/", $key)) {
           $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
           $tipe = $file['type'];
           $size = $file['size'];
@@ -85,7 +89,8 @@ if (isset($_POST['nama_properti'])) {
                 $queryUpload = "INSERT INTO gambar_properti (id_properti, gambar) VALUES ('" . $_GET['kode'] . "', '" . $newName . "')";
                 $resultUpload = mysqli_query(connection(), $queryUpload);
                 if ($resultUpload) {
-                  echo '<script type="text/javascript">alert("Berhasil");location.replace("?page=showProperty");</script>';
+                  $status = "ok";
+                  header('Location: ?page=showProperty&statusUpdate=' . $status);
                 } else {
                   echo '<script type="text/javascript">alert("Error Query Gambar");window.history.go(-1);</script>';
                 }
@@ -270,23 +275,24 @@ if (isset($_POST['nama_properti'])) {
     <div class="invalid-feedback">Please write a vprice.</div>
   </div>
   <?php
-    $queryGambar = mysqli_query(connection(), "SELECT * FROM gambar_properti WHERE id_properti = '$_GET[kode]'");
-    $no = 1;
-    while($resultGambar = mysqli_fetch_array($queryGambar)){
+  $queryGambar = mysqli_query(connection(), "SELECT * FROM gambar_properti WHERE id_properti = '$_GET[kode]'");
+  $no = 1;
+  while ($resultGambar = mysqli_fetch_array($queryGambar)) {
   ?>
-  <div class="col-12">
-    <label for="#" class="form-label">Gambar <?= $no ?></label>
-    <div id="imagePreviewGambar<?= $no ?>">
-      <img src="../image/<?= $resultGambar['gambar'] ?>" alt="image preview" style="width: 200px;" />
-      <a class="btn btn-danger" href="?page=updateProperty&kode=<?= $_GET['kode'] ?>&hapusGambar=<?= $resultGambar['gambar'] ?>" onclick="return confirm('This action cannot be undone')">Hapus Gambar</a>
+    <div class="col-12">
+      <label for="#" class="form-label">Gambar <?= $no ?></label>
+      <div id="imagePreviewGambar<?= $no ?>">
+        <img src="../image/<?= $resultGambar['gambar'] ?>" alt="image preview" style="width: 200px;" />
+        <a class="btn btn-danger" href="?page=updateProperty&kode=<?= $_GET['kode'] ?>&hapusGambar=<?= $resultGambar['gambar'] ?>" onclick="return confirm('This action cannot be undone')">Hapus Gambar</a>
+      </div>
+      <div id="currentDivGambar<?= $no ?>"></div>
+      <input type="file" class="form-control" id="gambar<?= $no ?>" name="gambar<?= $no ?>" onchange="return fileValidation('<?= $no ?>', '<?= $resultGambar['gambar'] ?>')" aria-label="file example" />
+      <div class="invalid-feedback">
+        Example invalid form file feedback
+      </div>
     </div>
-    <div id="currentDivGambar<?= $no ?>"></div>
-    <input type="file" class="form-control" id="gambar<?= $no ?>" name="gambar<?= $no ?>" onchange="return fileValidation('<?= $no ?>', '<?= $resultGambar['gambar'] ?>')" aria-label="file example" />
-    <div class="invalid-feedback">
-      Example invalid form file feedback
-    </div>
-  </div>
-  <?php $no++; } ?>
+  <?php $no++;
+  } ?>
   <div id="formfield">
   </div>
   <div class="col-12">
@@ -301,25 +307,26 @@ if (isset($_POST['nama_properti'])) {
 <script>
   let no = <?= $no ?>;
   let max = 10;
+
   function addUpload() {
-    if(no <= max){
+    if (no <= max) {
       var form = '<div class="col-12">' +
         '<label for="#" class="form-label">Gambar ' + no + '</label>' +
-        '<div id="imagePreviewGambar' + no + '"></div>'+
+        '<div id="imagePreviewGambar' + no + '"></div>' +
         '<input type="file" class="form-control" id="gambar' + no + '" onchange="return fileValidation(\'' + no + '\')" name="gambar' + no + '" aria-label="file example" required />' +
         '<div class="invalid-feedback">Example invalid form file feedback</div></div>';
       document.getElementById('formfield').insertAdjacentHTML("beforeend", form);
       no++;
-    }else{
+    } else {
       alert('Maximal upload 10');
     }
   }
 
   function removeUpload() {
-    if(no > 2) {
+    if (no > 2) {
       no--;
       document.getElementById('formfield').removeChild(document.getElementById('formfield').lastChild);
-    }else{
+    } else {
       alert('Minimal upload 1');
     }
   }
@@ -328,20 +335,20 @@ if (isset($_POST['nama_properti'])) {
     var fileInput = document.getElementById('gambar' + id);
     var filePath = fileInput.value;
     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-      
+
     if (!allowedExtensions.exec(filePath)) {
       alert('Invalid file type');
       fileInput.value = '';
       return false;
-    }else{
+    } else {
       if (fileInput.files && fileInput.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-          if(current != null) document.getElementById('currentDivGambar' + id).innerHTML= '<input type="hidden" name="currentGambar' + id + '" value="' + current + '">';
+          if (current != null) document.getElementById('currentDivGambar' + id).innerHTML = '<input type="hidden" name="currentGambar' + id + '" value="' + current + '">';
           document.getElementById('imagePreviewGambar' + id).innerHTML = '<img src="' + e.target.result + '" width="200px" />';
         };
         reader.readAsDataURL(fileInput.files[0]);
       }
     }
-  } 
+  }
 </script>
