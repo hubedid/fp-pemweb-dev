@@ -1,3 +1,21 @@
+<?php
+if(isset($_GET['kode'])){
+  $queryDeletePenjualan = "DELETE FROM penjualan WHERE id_properti = '$_GET[kode]'";
+  $resultDeletePenjualan = mysqli_query(connection(),$queryDeletePenjualan);
+  if($resultDeletePenjualan){
+    $queryDeleteGambar = "DELETE FROM gambar_properti WHERE id_properti = '$_GET[kode]'";
+    $resultDeleteGambar = mysqli_query(connection(),$queryDeleteGambar);
+    if($resultDeleteGambar){
+      $queryDeleteProperty = "DELETE FROM properti WHERE id_properti = '$_GET[kode]'";
+      $resultDeleteProperty = mysqli_query(connection(),$queryDeleteProperty);
+      if($resultDeleteProperty){
+        echo "<script>alert('Data berhasil dihapus!')</script>";
+        echo "<script>location='?page=showProperty'</script>";
+      }
+    }
+  }
+}
+?>
 <div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
   <h2>Welcome To Your Property Menu</h2>
   <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
@@ -47,7 +65,7 @@
         <td class="d-flex gap-1">
           <a href="properti/detailProperty.php?id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
           <a href="?page=updateProperty&kode=<?= $dataShowProperty['id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>
-          <a href="?page=showProperty&kode=<?= $dataShowProperty['id_properti']; ?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
+          <a href="?page=showProperty&kode=<?= $dataShowProperty['id_properti']; ?>" onclick="return confirm('Menghapus properti akan menghapus data penjualan dengan properti yang berkaitan. Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
     <?php
