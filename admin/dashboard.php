@@ -67,7 +67,7 @@ if(empty($_SESSION['logged_in'])){
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                style="<?= isset($_GET['page']) && ($_GET['page'] == 'addProperty' || $_GET['page'] == 'showProperty') ? 'background-color: white; color: #0275d8' : '' ?>"
+                style="<?= isset($_GET['page']) && ($_GET['page'] == 'addProperty' || $_GET['page'] == 'showProperty' || $_GET['page'] == 'detailProperty') ? 'background-color: white; color: #0275d8' : '' ?>"
               >
                 <i class="fa-solid fa-building-circle-check me-3 ps-2"></i
                 >Property
@@ -92,7 +92,7 @@ if(empty($_SESSION['logged_in'])){
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                style="<?= isset($_GET['page']) && ($_GET['page'] == 'addSale' || $_GET['page'] == 'showSale') ? 'background-color: white; color: #0275d8' : '' ?>"
+                style="<?= isset($_GET['page']) && ($_GET['page'] == 'addSale' || $_GET['page'] == 'showSale' || $_GET['page'] == 'detailPenjualan') ? 'background-color: white; color: #0275d8' : '' ?>"
               >
                 <i class="fa-solid fa-cart-shopping me-3 ps-2"></i>Sale
               </a>

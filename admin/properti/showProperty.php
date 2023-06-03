@@ -63,7 +63,7 @@ if(isset($_GET['kode'])){
         <td><?= $dataShowProperty['provinsi'] ?></td>
         <td><?= $dataShowProperty['status'] ?></td>
         <td class="d-flex gap-1">
-          <a href="properti/detailProperty.php?id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
+          <a href="?page=detailProperty&id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
           <a href="?page=updateProperty&kode=<?= $dataShowProperty['id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>
           <a href="?page=showProperty&kode=<?= $dataShowProperty['id_properti']; ?>" onclick="return confirm('Menghapus properti akan menghapus data penjualan dengan properti yang berkaitan. Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>

@@ -92,7 +92,7 @@ if (@$_GET["statusUpdate"] !== NULL) {
         <td><?= $dataDataPenjualan['tgl_pesan'] ?></td>
         <td><?= $dataDataPenjualan['tgl_selesai'] ?></td>
         <td class="d-flex gap-1">
-          <a href="penjualan/detailPenjualan.php?id_penjualan=<?php echo $dataDataPenjualan["id_penjualan"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
+          <a href="?page=detailPenjualan&id_penjualan=<?php echo $dataDataPenjualan["id_penjualan"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
           <a href="?page=updateSale&kode=<?= $dataDataPenjualan['id_penjualan']; ?> "><i class="fa-solid fa-pen"></i></a>
           <a href="?page=showSale&kode=<?= $dataDataPenjualan['id_penjualan']; ?>" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
