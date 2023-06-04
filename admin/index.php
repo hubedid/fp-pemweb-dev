@@ -59,7 +59,7 @@ if (isset($_POST['username'])) {
                 <form action="" method="post">
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-primary" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                        <input type="text" name="username" class="form-control" placeholder="username" aria-label="username" aria-describedby="basic-addon1" />
+                        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-primary" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
@@ -78,6 +78,7 @@ if (isset($_POST['username'])) {
                 }
                 ?>
             </div>
+            <img class="logo-login" src="../image/logo2.png" alt="logo2">
         </div>
     </div>
 
