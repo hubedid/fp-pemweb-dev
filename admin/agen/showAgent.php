@@ -90,7 +90,7 @@ if (@$_GET["statusUpdate"] !== NULL) {
     $queryDataAgen = "SELECT * FROM agen";
     if (isset($_GET['search'])) {
       $search = mysqli_real_escape_string(connection(), $_GET['search']);
-      $queryDataAgen = "select * from agen where nama like '%$search%' or email like '%$search%' or no_telp like '%$search%' or alamat like '%$search%' or umur like '%$search%'";
+      $queryDataAgen = "select * from agen where nama like '%$search%' or email like '%$search%' or no_telp like '%$search%' or alamat like '%$search%' or umur like '%$search%' or jenis_kelamin like '%$search%' or id_agent like '%$search%'";
     }
     $resultDataAgen = mysqli_query(connection(), $queryDataAgen);
     $no = 1;

@@ -13,6 +13,38 @@ if (isset($_POST['kirim'])) {
   email = '$_POST[email]' WHERE id_agent='$_GET[kode]'";
   $resultUpdate = mysqli_query(connection(), $queryUpdate);
   if ($resultUpdate) {
+    if(isset($_POST['currentGambar']) && is_uploaded_file($_FILES['gambar']['tmp_name'])){
+      $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
+      $tipe = $_FILES['gambar']['type'];
+      $size = $_FILES['gambar']['size'];
+      if (is_uploaded_file($_FILES['gambar']['tmp_name'])) { //cek apakah ada file yang di upload
+        if (!in_array(($tipe), $ext)) { //cek ekstensi file
+          echo '<script type="text/javascript">alert("Format gambar tidak diperbolehkan!");window.history.go(-1)</script>';
+        } else if ($size > 2097152) {
+          echo '<script type="text/javascript">alert("Ukuran gambar terlalu besar!");window.history.go(-1);</script>';
+        } else {
+          $extractFile = pathinfo($_FILES['gambar']['name']);
+          $dir         = "../image/";
+          $newName = microtime() . '.' . $extractFile['extension'];
+          //pindahkan file yang di upload ke directory tujuan
+          if (move_uploaded_file($_FILES['gambar']['tmp_name'], $dir . $newName)) {
+            unlink("../image/" . $_POST['currentGambar']);
+            $queryUpdateGambar = "UPDATE agen SET gambar = '$newName' WHERE gambar = '$_POST[currentGambar]' ";
+            $resultUpdateGambar = mysqli_query(connection(), $queryUpdateGambar);
+            if ($resultUpdateGambar) {
+              $status = "ok";
+              header('Location: ?page=showAgent&statusUpdate=' . $statusUpdate);
+            } else {
+              echo '<script type="text/javascript">alert("Error Query Gambar");window.history.go(-1);</script>';
+            }
+          } else {
+            echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
+          }
+        }
+      } else {
+        echo '<script type="text/javascript">alert("Tidak ada foto yang dipilih");window.history.go(-1);</script>';
+      }
+    }
     $statusUpdate = "ok";
   } else {
     $statusUpdate = "err";
@@ -74,20 +106,48 @@ if (isset($_POST['kirim'])) {
     <div class="invalid-feedback">Please write a phone number.</div>
   </div>
 
-  <!-- <div class="mb-3">
+  <div class="mb-3">
       <label for="#" class="form-label">Foto</label>
+      <div id="imagePreviewGambar">
+        <img src="../image/<?= $resultShow['gambar'] ?>" width="200px" />
+      </div>
+      <div id="currentDivGambar"></div>
       <input
         type="file"
         class="form-control"
         aria-label="file example"
         name="gambar"
-        required
+        id="gambar"
+        onchange="return fileValidation('<?= $resultShow['gambar'] ?>')"
       />
       <div class="invalid-feedback">
         Example invalid form file feedback
       </div>
-    </div> -->
+    </div>
 
   <button type="submit" class="btn btn-primary" name="kirim">Submit</button>
 </form>
 <!-- Akhir form -->
+
+<script>
+  function fileValidation(current = null) {
+    var fileInput = document.getElementById('gambar');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+
+    if (!allowedExtensions.exec(filePath)) {
+      alert('Invalid file type');
+      fileInput.value = '';
+      return false;
+    } else {
+      if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          if (current != null) document.getElementById('currentDivGambar').innerHTML = '<input type="hidden" name="currentGambar" value="' + current + '">';
+          document.getElementById('imagePreviewGambar').innerHTML = '<img src="' + e.target.result + '" width="200px" />';
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    }
+  }
+</script>
