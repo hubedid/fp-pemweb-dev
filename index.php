@@ -63,7 +63,7 @@ include 'database/connection.php';
         $search = mysqli_real_escape_string(connection(), $_GET['search']);
         $query = "SELECT * FROM properti WHERE nama_properti LIKE '%$search%' OR kota LIKE '%$search%' OR alamat LIKE '%$search%' OR deskripsi LIKE '%$search%' OR harga LIKE '%$search%' OR luas_bangunan LIKE '%$search%' OR kamar_tidur LIKE '%$search%' OR kamar_mandi LIKE '%$search%' OR balkon LIKE '%$search%' OR ruang_keluarga LIKE '%$search%' OR dapur LIKE '%$search%' OR tipe_properti LIKE '%$search%'";
       } else {
-        $query = "SELECT * FROM properti";
+        $query = "SELECT * FROM properti LIMIT 6";
       }
       $result = mysqli_query(connection(), $query);
       while ($row = mysqli_fetch_array($result)) {
@@ -120,6 +120,10 @@ include 'database/connection.php';
         </a>
       <?php } ?>
     </div>
+    <a href="property.php" class="lihat-selengkapnya-box">
+      <p>lihat selengkapnya</p>
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
   </div>
   <!-- Akhir properti kami -->
 

@@ -296,6 +296,24 @@ h5 {
 .detail-box h6 {
   color: #303030;
 }
+
+.lihat-selengkapnya-box {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+.lihat-selengkapnya-box p,
+i {
+  color: #8c9197;
+  font-size: 0.9rem;
+}
+
+.lihat-selengkapnya-box i {
+  margin-left: 0.3rem;
+}
 /* Akhir property */
 
 /* Mengapa memilih kami */
