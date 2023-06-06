@@ -10,129 +10,115 @@ if (isset($_POST['nama'])) {
   }
 }
 ?>
-<div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
+<div class="welcome-box">
   <h2>Welcome To Your Sale Menu</h2>
 </div>
-<h1 class="heading-1 mt-3 mb-5 fw-bolder">Tambah Penjualan</h1>
+<h1 class="heading-1">Tambah Penjualan</h1>
 
 <!-- Alert insert -->
 <?php
 if ($status == "ok") {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Berhasil!</strong> Menyimpan data penjualan.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>';
+            <p><strong>Berhasil!</strong> Menyimpan data penjualan.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 } else if ($status == "err") {
   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Gagal!</strong> Menyimpan data penjualan.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>';
+            <p><strong>Gagal!</strong> Menyimpan data penjualan.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 }
 ?>
 
 <!-- Form -->
-<form class="form row g-3 p-4 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
-  <div class="col-md-6">
-    <label for="#" class="form-label">Id Properti</label>
-    <select id="id_properti" name="id_properti" class="form-select" required>
-      <option selected disabled value="">Choose...</option>
-      <?php
-      $queryProperty = "SELECT * FROM properti";
-      $resultProperty = mysqli_query(connection(), $queryProperty);
-      while ($rowProperty = mysqli_fetch_array($resultProperty)) {
-        echo "<option value='$rowProperty[id_properti]'>$rowProperty[nama_properti]</option>";
-      }
-      ?>
-    </select>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please select a valid id property.
+<form class="form" action="" method="POST" enctype="multipart/form-data">
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Id Properti</label>
+      <select id="id_properti" name="id_properti" class="form-select" required>
+        <option selected disabled value="">Choose...</option>
+        <?php
+        $queryProperty = "SELECT * FROM properti";
+        $resultProperty = mysqli_query(connection(), $queryProperty);
+        while ($rowProperty = mysqli_fetch_array($resultProperty)) {
+          echo "<option value='$rowProperty[id_properti]'>$rowProperty[nama_properti]</option>";
+        }
+        ?>
+      </select>
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Id Agen</label>
+      <select id="id_agen" name="id_agen" class="form-select" required>
+        <option selected disabled value="">Choose...</option>
+        <?php
+        $queryAgen = "SELECT * FROM agen";
+        $resultAgen = mysqli_query(connection(), $queryAgen);
+        while ($rowAgen = mysqli_fetch_array($resultAgen)) {
+          echo "<option value='$rowAgen[id_agent]'>$rowAgen[nama]</option>";
+        }
+        ?>
+      </select>
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Id Agen</label>
-    <select id="id_agen" name="id_agen" class="form-select" required>
-      <option selected disabled value="">Choose...</option>
-      <?php
-      $queryAgen = "SELECT * FROM agen";
-      $resultAgen = mysqli_query(connection(), $queryAgen);
-      while ($rowAgen = mysqli_fetch_array($resultAgen)) {
-        echo "<option value='$rowAgen[id_agent]'>$rowAgen[nama]</option>";
-      }
-      ?>
-    </select>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please select a valid id agent.
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Nama</label>
+      <input type="text" class="form-control" id="nama" name="nama" required placeholder="nama pembeli" />
     </div>
-  </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="nama" name="nama" required placeholder="nama pembeli" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a name.</div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="#" class="form-label">Nik</label>
-    <input type="number" class="form-control" id="nik" name="nik" required placeholder="nik pembeli" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a nik.</div>
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Nik</label>
+      <input type="number" class="form-control" id="nik" name="nik" required placeholder="nik pembeli" />
+    </div>
   </div>
 
   <div class="col-md-12">
     <label for="#" class="form-label">Alamat</label>
     <input type="text" class="form-control" id="alamat" name="alamat" required placeholder="alamat pembeli" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a addres.</div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">No Telepon</label>
-    <input type="number" class="form-control" id="no_telp" name="no_telp" required placeholder="nomor telepon pembeli" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a phoner number.</div>
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">No Telepon</label>
+      <input type="number" class="form-control" id="no_telp" name="no_telp" required placeholder="nomor telepon pembeli" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required placeholder="email pembeli" />
+    </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email" required placeholder="email pembeli" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a email.</div>
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Tanggal Pesan</label>
+      <input type="date" class="form-control" id="tanggal_pesan" name="tanggal_pesan" required placeholder="tanggal beli" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Tanggal Selesai</label>
+      <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required placeholder="tanggal selesai" />
+    </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Tanggal Pesan</label>
-    <input type="date" class="form-control" id="tanggal_pesan" name="tanggal_pesan" required placeholder="tanggal beli" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a date order.</div>
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Jumlah Dp</label>
+      <input type="number" class="form-control" id="jumlah_dp" name="jumlah_dp" required placeholder="jumlah dp" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Sisa Bayar</label>
+      <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" required placeholder="sisa bayar" />
+    </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Tanggal Selesai</label>
-    <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required placeholder="tanggal selesai" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a date finish.</div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="#" class="form-label">Jumlah Dp</label>
-    <input type="number" class="form-control" id="jumlah_dp" name="jumlah_dp" required placeholder="jumlah dp" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a Dp.</div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="#" class="form-label">Sisa Bayar</label>
-    <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" required placeholder="sisa bayar" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a remaining pay.</div>
-  </div>
-
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
+  <button type="submit" class="button button-submit">Submit</button>
 </form>
 <!-- Akhir form -->

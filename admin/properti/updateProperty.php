@@ -110,198 +110,161 @@ if (isset($_POST['nama_properti'])) {
 }
 
 ?>
-<div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
+<div class="welcome-box">
   <h2>Welcome To Your Property Menu</h2>
 </div>
-<h1 class="heading-1 mt-3 mb-5 fw-bolder">Ubah Properti</h1>
+<h1 class="heading-1">Ubah Properti</h1>
 
 <!-- Form -->
-<form class="form row g-3 p-4 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
+<form class="form" action="" method="POST" enctype="multipart/form-data">
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Id Agen</label>
+      <select id="id_agen" name="id_agen" class="form-select" required>
+        <?php
+        $queryAgen = "SELECT * FROM agen";
+        $resultAgen = mysqli_query(connection(), $queryAgen);
+        while ($rowAgen = mysqli_fetch_array($resultAgen)) {
+          echo "<option value='$rowAgen[id_agent]'";
+          echo $resultShow['id_agen'] == $rowAgen['id_agent'] ? "selected" : "";
+          echo ">$rowAgen[nama]</option>";
+        }
+        ?>
+      </select>
+    </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Id Agen</label>
-    <select id="id_agen" name="id_agen" class="form-select" required>
-      <?php
-      $queryAgen = "SELECT * FROM agen";
-      $resultAgen = mysqli_query(connection(), $queryAgen);
-      while ($rowAgen = mysqli_fetch_array($resultAgen)) {
-        echo "<option value='$rowAgen[id_agent]'";
-        echo $resultShow['id_agen'] == $rowAgen['id_agent'] ? "selected" : "";
-        echo ">$rowAgen[nama]</option>";
-      }
-      ?>
-    </select>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please select a valid id agent.
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Tipe Properti</label>
+      <select id="tipe_properti" name="tipe_properti" class="form-select">
+        <option value="Minimalis" <?php $resultShow['tipe_properti'] == "Minimalis" ? "selected" : "" ?>>Minimalis</option>
+        <option value="Klasik" <?php $resultShow['tipe_properti'] == "Klasik" ? "selected" : "" ?>>Klasik</option>
+        <option value="Etnik" <?php $resultShow['tipe_properti'] == "Etnik" ? "selected" : "" ?>>Etnik</option>
+        <option value="Mediterranean" <?php $resultShow['tipe_properti'] == "Mediterranean" ? "selected" : "" ?>>Mediterranean</option>
+        <option value="Skandinavia" <?php $resultShow['tipe_properti'] == "Skandinavia" ? "selected" : "" ?>>Skandinavia</option>
+        <option value="Vintage" <?php $resultShow['tipe_properti'] == "Vintage" ? "selected" : "" ?>>Vintage</option>
+        <option value="Rustic" <?php $resultShow['tipe_properti'] == "Rustic" ? "selected" : "" ?>>Rustic</option>
+        <option value="Industrial" <?php $resultShow['tipe_properti'] == "Industrial" ? "selected" : "" ?>>Industrial</option>
+        <option value="Farmhouse" <?php $resultShow['tipe_properti'] == "Farmhouse" ? "selected" : "" ?>>Farmhouse</option>
+        <option value="Mid-Century Modern" <?php $resultShow['tipe_properti'] == "Mid-Century Modern" ? "selected" : "" ?>>Mid-Century Modern</option>
+        <option value="Contemporary" <?php $resultShow['tipe_properti'] == "Contemporary" ? "selected" : "" ?>>Contemporary</option>
+        <option value="Traditional" <?php $resultShow['tipe_properti'] == "Traditional" ? "selected" : "" ?>>Traditional</option>
+        <option value="Transitional" <?php $resultShow['tipe_properti'] == "Transitional" ? "selected" : "" ?>>Transitional</option>
+        <option value="Modern" <?php $resultShow['tipe_properti'] == "Modern" ? "selected" : "" ?>>Modern</option>
+        <option value="Coastal" <?php $resultShow['tipe_properti'] == "Coastal" ? "selected" : "" ?>>Coastal</option>
+        <option value="Eclectic" <?php $resultShow['tipe_properti'] == "Eclectic" ? "selected" : "" ?>>Eclectic</option>
+        <option value="Shabby Chic" <?php $resultShow['tipe_properti'] == "Shabby Chic" ? "selected" : "" ?>>Shabby Chic</option>
+        <option value="Hamptons" <?php $resultShow['tipe_properti'] == "Hamptons" ? "selected" : "" ?>>Hamptons</option>
+        <option value="French Country" <?php $resultShow['tipe_properti'] == "French Country" ? "selected" : "" ?>>French Country</option>
+        <option value="Tropical" <?php $resultShow['tipe_properti'] == "Tropical" ? "selected" : "" ?>>Tropical</option>
+        <option value="Asian" <?php $resultShow['tipe_properti'] == "Asian" ? "selected" : "" ?>>Asian</option>
+        <option value="Beach Style" <?php $resultShow['tipe_properti'] == "Beach Style" ? "selected" : "" ?>>Beach Style</option>
+        <option value="Southwestern" <?php $resultShow['tipe_properti'] == "Southwestern" ? "selected" : "" ?>>Southwestern</option>
+      </select>
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Tipe Properti</label>
-    <select id="tipe_properti" name="tipe_properti" class="form-select">
-      <option value="Minimalis" <?php $resultShow['tipe_properti'] == "Minimalis" ? "selected" : "" ?>>Minimalis</option>
-      <option value="Klasik" <?php $resultShow['tipe_properti'] == "Klasik" ? "selected" : "" ?>>Klasik</option>
-      <option value="Etnik" <?php $resultShow['tipe_properti'] == "Etnik" ? "selected" : "" ?>>Etnik</option>
-      <option value="Mediterranean" <?php $resultShow['tipe_properti'] == "Mediterranean" ? "selected" : "" ?>>Mediterranean</option>
-      <option value="Skandinavia" <?php $resultShow['tipe_properti'] == "Skandinavia" ? "selected" : "" ?>>Skandinavia</option>
-      <option value="Vintage" <?php $resultShow['tipe_properti'] == "Vintage" ? "selected" : "" ?>>Vintage</option>
-      <option value="Rustic" <?php $resultShow['tipe_properti'] == "Rustic" ? "selected" : "" ?>>Rustic</option>
-      <option value="Industrial" <?php $resultShow['tipe_properti'] == "Industrial" ? "selected" : "" ?>>Industrial</option>
-      <option value="Farmhouse" <?php $resultShow['tipe_properti'] == "Farmhouse" ? "selected" : "" ?>>Farmhouse</option>
-      <option value="Mid-Century Modern" <?php $resultShow['tipe_properti'] == "Mid-Century Modern" ? "selected" : "" ?>>Mid-Century Modern</option>
-      <option value="Contemporary" <?php $resultShow['tipe_properti'] == "Contemporary" ? "selected" : "" ?>>Contemporary</option>
-      <option value="Traditional" <?php $resultShow['tipe_properti'] == "Traditional" ? "selected" : "" ?>>Traditional</option>
-      <option value="Transitional" <?php $resultShow['tipe_properti'] == "Transitional" ? "selected" : "" ?>>Transitional</option>
-      <option value="Modern" <?php $resultShow['tipe_properti'] == "Modern" ? "selected" : "" ?>>Modern</option>
-      <option value="Coastal" <?php $resultShow['tipe_properti'] == "Coastal" ? "selected" : "" ?>>Coastal</option>
-      <option value="Eclectic" <?php $resultShow['tipe_properti'] == "Eclectic" ? "selected" : "" ?>>Eclectic</option>
-      <option value="Shabby Chic" <?php $resultShow['tipe_properti'] == "Shabby Chic" ? "selected" : "" ?>>Shabby Chic</option>
-      <option value="Hamptons" <?php $resultShow['tipe_properti'] == "Hamptons" ? "selected" : "" ?>>Hamptons</option>
-      <option value="French Country" <?php $resultShow['tipe_properti'] == "French Country" ? "selected" : "" ?>>French Country</option>
-      <option value="Tropical" <?php $resultShow['tipe_properti'] == "Tropical" ? "selected" : "" ?>>Tropical</option>
-      <option value="Asian" <?php $resultShow['tipe_properti'] == "Asian" ? "selected" : "" ?>>Asian</option>
-      <option value="Beach Style" <?php $resultShow['tipe_properti'] == "Beach Style" ? "selected" : "" ?>>Beach Style</option>
-      <option value="Southwestern" <?php $resultShow['tipe_properti'] == "Southwestern" ? "selected" : "" ?>>Southwestern</option>
-    </select>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please select a valid type property.
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Nama Properti</label>
+      <input type="text" class="form-control" id="nama_properti" name="nama_properti" required placeholder="name property" value="<?php echo $resultShow['nama_properti']; ?>" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Status</label>
+      <select id="status" name="status" class="form-select">
+        <option><?php echo $resultShow['status']; ?></option>
+        <option value="Available" <?php echo $resultShow['status'] == 1 ? "selected" : ""; ?>>Available</option>
+        <option value="Not Available" <?php echo $resultShow['status'] == 0 ? "selected" : ""; ?>>Not Available</option>
+      </select>
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Nama Properti</label>
-    <input type="text" class="form-control" id="nama_properti" name="nama_properti" required placeholder="name property" value="<?php echo $resultShow['nama_properti']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a property name.</div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="#" class="form-label">Status</label>
-    <select id="status" name="status" class="form-select">
-      <option><?php echo $resultShow['status']; ?></option>
-      <option value="Available" <?php echo $resultShow['status'] == 1 ? "selected" : ""; ?>>Available</option>
-      <option value="Not Available" <?php echo $resultShow['status'] == 0 ? "selected" : ""; ?>>Not Available</option>
-    </select>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please select a valid status.</div>
-  </div>
-
-  <div class="col-md-12">
+  <div>
     <label for="#" class="form-label">Alamat Properti</label>
     <input type="text" class="form-control" id="alamat" name="alamat" required placeholder="addres" value="<?php echo $resultShow['alamat']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a addres.</div>
   </div>
 
-  <div class="col-12">
+  <div>
     <label for="#" class="form-label">Deskripsi</label>
     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required placeholder="description"><?php echo $resultShow['deskripsi']; ?></textarea>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a description.</div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Kota</label>
-    <input type="text" class="form-control" id="kota" name="kota" required placeholder="city" value="<?php echo $resultShow['kota']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a city.</div>
-  </div>
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Kota</label>
+      <input type="text" class="form-control" id="kota" name="kota" required placeholder="city" value="<?php echo $resultShow['kota']; ?>" />
+    </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Provinsi</label>
-    <input type="text" class="form-control" id="provinsi" name="provinsi" required placeholder="province" value="<?php echo $resultShow['provinsi']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a province.</div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="#" class="form-label">Luas Bangunan</label>
-    <input type="text" class="form-control" id="luas_bangunan" name="luas_bangunan" required placeholder="Luas bangunan" value="<?php echo $resultShow['luas_bangunan']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a building area.</div>
-  </div>
-
-  <div class="col-md-6">
-    <label for="#" class="form-label">Kamar Mandi</label>
-    <input type="text" class="form-control" id="kamar_mandi" name="kamar_mandi" required placeholder="jumlah kamar mandi 1-10" value="<?php echo $resultShow['kamar_mandi']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please write a number of bathroom.
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Provinsi</label>
+      <input type="text" class="form-control" id="provinsi" name="provinsi" required placeholder="province" value="<?php echo $resultShow['provinsi']; ?>" />
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Kamar Tidur</label>
-    <input type="text" class="form-control" id="kamar_tidur" name="kamar_tidur" required placeholder="jumlah kamar tidur 1-10" value="<?php echo $resultShow['kamar_tidur']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please write a number of bedroom.
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Luas Bangunan</label>
+      <input type="text" class="form-control" id="luas_bangunan" name="luas_bangunan" required placeholder="Luas bangunan" value="<?php echo $resultShow['luas_bangunan']; ?>" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Kamar Mandi</label>
+      <input type="text" class="form-control" id="kamar_mandi" name="kamar_mandi" required placeholder="jumlah kamar mandi 1-10" value="<?php echo $resultShow['kamar_mandi']; ?>" />
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Dapur</label>
-    <input type="text" class="form-control" id="dapur" name="dapur" required placeholder="jumlah dapur 1-10" value="<?php echo $resultShow['dapur']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please write a number of kitchen.
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Kamar Tidur</label>
+      <input type="text" class="form-control" id="kamar_tidur" name="kamar_tidur" required placeholder="jumlah kamar tidur 1-10" value="<?php echo $resultShow['kamar_tidur']; ?>" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Dapur</label>
+      <input type="text" class="form-control" id="dapur" name="dapur" required placeholder="jumlah dapur 1-10" value="<?php echo $resultShow['dapur']; ?>" />
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Ruang Keluarga</label>
-    <input type="text" class="form-control" id="ruang_keluarga" name="ruang_keluarga" required placeholder="jumlah ruang keluarga 1-10" value="<?php echo $resultShow['ruang_keluarga']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please write a number of family room.
+  <div class="grid-form">
+    <div class="grid-form-1">
+      <label for="#" class="form-label">Ruang Keluarga</label>
+      <input type="text" class="form-control" id="ruang_keluarga" name="ruang_keluarga" required placeholder="jumlah ruang keluarga 1-10" value="<?php echo $resultShow['ruang_keluarga']; ?>" />
+    </div>
+
+    <div class="grid-form-2">
+      <label for="#" class="form-label">Balkon</label>
+      <input type="text" class="form-control" id="balkon" name="balkon" required placeholder="jumlah balkon 1-10" value="<?php echo $resultShow['balkon']; ?>" />
     </div>
   </div>
 
-  <div class="col-md-6">
-    <label for="#" class="form-label">Balkon</label>
-    <input type="text" class="form-control" id="balkon" name="balkon" required placeholder="jumlah balkon 1-10" value="<?php echo $resultShow['balkon']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">
-      Please write a number of balcony.
-    </div>
-  </div>
-
-  <div class="col-md-6">
+  <div>
     <label for="#" class="form-label">Harga</label>
     <input type="text" class="form-control" id="harga" name="harga" required placeholder="harga" value="<?php echo $resultShow['harga']; ?>" />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a vprice.</div>
   </div>
+
   <?php
   $queryGambar = mysqli_query(connection(), "SELECT * FROM gambar_properti WHERE id_properti = '$_GET[kode]'");
   $no = 1;
   while ($resultGambar = mysqli_fetch_array($queryGambar)) {
   ?>
-    <div class="col-12">
+    <div>
       <label for="#" class="form-label">Gambar <?= $no ?></label>
-      <div id="imagePreviewGambar<?= $no ?>">
+      <div class="image-preview" id="imagePreviewGambar<?= $no ?>">
         <img src="../image/<?= $resultGambar['gambar'] ?>" alt="image preview" style="width: 200px;" />
-        <a class="btn btn-danger" href="?page=updateProperty&kode=<?= $_GET['kode'] ?>&hapusGambar=<?= $resultGambar['gambar'] ?>" onclick="return confirm('This action cannot be undone')">Hapus Gambar</a>
+        <a class="button button-danger" href="?page=updateProperty&kode=<?= $_GET['kode'] ?>&hapusGambar=<?= $resultGambar['gambar'] ?>" onclick="return confirm('This action cannot be undone')">Hapus Gambar</a>
       </div>
       <div id="currentDivGambar<?= $no ?>"></div>
       <input type="file" class="form-control" id="gambar<?= $no ?>" name="gambar<?= $no ?>" onchange="return fileValidation('<?= $no ?>', '<?= $resultGambar['gambar'] ?>')" aria-label="file example" />
-      <div class="invalid-feedback">
-        Example invalid form file feedback
-      </div>
     </div>
   <?php $no++;
   } ?>
   <div id="formfield">
   </div>
-  <div class="col-12">
-    <button type="button" class="btn btn-primary" onclick="addUpload()">Add Upload</button>
-    <button type="button" class="btn btn-primary" onclick="removeUpload()">Remove Upload</button>
+  <div>
+    <button type="button" class="button button-submit" style="margin-bottom: 1rem;" onclick="addUpload()">Add Upload</button>
+    <button type="button" class="button button-submit" style="margin-bottom: 1rem;" onclick="removeUpload()">Remove Upload</button>
   </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
+  <button type="submit" class="button button-submit">Submit</button>
 </form>
 <!-- Akhir form -->
 <script>
@@ -314,7 +277,7 @@ if (isset($_POST['nama_properti'])) {
         '<label for="#" class="form-label">Gambar ' + no + '</label>' +
         '<div id="imagePreviewGambar' + no + '"></div>' +
         '<input type="file" class="form-control" id="gambar' + no + '" onchange="return fileValidation(\'' + no + '\')" name="gambar' + no + '" aria-label="file example" required />' +
-        '<div class="invalid-feedback">Example invalid form file feedback</div></div>';
+        '</div>';
       document.getElementById('formfield').insertAdjacentHTML("beforeend", form);
       no++;
     } else {

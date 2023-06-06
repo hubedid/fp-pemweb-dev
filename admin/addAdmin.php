@@ -22,65 +22,69 @@ if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
   }
 }
 ?>
-<div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
+<div class="welcome-box welcome-box-search">
   <h2>Welcome To Your Admin Menu</h2>
-  <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
+  <form action="" method="GET" class="search-form" role="search">
     <input name="page" type="hidden" value="showSale" />
-    <input class="form-control me-2" name="search" type="search" placeholder="Search" <?= isset($_GET['search']) ? 'value="' . $_GET['search'] . '"' : '' ?> aria-label="Search" />
-    <button class="btn btn-outline-light" type="submit">
+    <input class="form-input" name="search" type="search" placeholder="Search" <?= isset($_GET['search']) ? 'value="' . $_GET['search'] . '"' : '' ?> aria-label="Search" />
+    <button class="button search-button" type="submit">
       Search
     </button>
-    <?= isset($_GET['search']) ? '<a class="btn btn-outline-info ms-2"  href="?page=showSale">Reset</a>' : '' ?>
+    <?= isset($_GET['search']) ? '<a class="button search-button"  href="?page=showSale">Reset</a>' : '' ?>
   </form>
 </div>
 
 <!-- Form -->
-<h1 class="heading-1 mt-3 mb-3 fw-bolder">Tambah Admin</h1>
+<h1 class="heading-1">Tambah Admin</h1>
 
 <!-- Alert -->
 <?php
 if ($statusInsert == "ok") {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Berhasil!</strong> Menambah data admin.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
+            <p><strong>Berhasil!</strong> Menyimpan data admin.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 } else if ($statusDelete == "ok") {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Berhasil!</strong> Menghapus data admin.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
+            <p><strong>Berhasiloo!</strong> Menghapus data properti.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 } else if ($statusInsert == "err") {
   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Gagal!</strong> Menambah data admin.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
+            <p><strong>Gagal!</strong> Menyimpan data admin.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 } else if ($statusDelete == "err") {
   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Gagal!</strong> Menghapus data admin.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
+            <p><strong>Gagal!</strong> Menghapus data admin.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 }
 ?>
 
-<form class="form p-4 needs-validation" action="" method="POST" novalidate>
+<form class="form" action="" method="POST">
   <div class="mb-3">
     <label for="#" class="form-label">Username</label>
     <input type="text" class="form-control" id="username" name="username" placeholder="username" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a username.</div>
   </div>
   <div class="mb-3">
     <label for="#" class="form-label">Password</label>
     <input type="password" class="form-control" id="password" name="password" placeholder="password" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a password.</div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="button button-submit">Submit</button>
 </form>
 <!-- Akhir form -->
 
 <!-- Tampil data -->
-<h1 class="heading-1 mt-3 mb-3 fw-bolder">Data Admin</h1>
+<h1 class="heading-1">Data Admin</h1>
 <table class="table">
   <thead>
     <tr>

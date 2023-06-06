@@ -42,9 +42,6 @@ if (isset($_POST['username'])) {
     <!-- Logo -->
     <link rel="icon" href="../image/logoatas.png" type="image/x-icon" />
 
-    <!-- Bootrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
-
     <!-- CSS -->
     <link rel="stylesheet" href="../css/admin.css" />
 </head>
@@ -55,18 +52,18 @@ if (isset($_POST['username'])) {
         <div class="layer-2"></div>
         <div class="login-boxs">
             <div class="login-box">
-                <h2 class="mb-5">Login as Admin</h2>
+                <h2>Login as Admin</h2>
                 <form action="" method="post">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-primary" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                    <div class="input-group">
+                        <span class="input-group-icon" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                        <input class="input-form-login" type="text" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-primary" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
-                        <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" />
+                    <div class="input-group">
+                        <span class="input-group-icon" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
+                        <input class="input-form-login" type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" />
                     </div>
-                    <div class="w-100 d-flex justify-content-center mt-5">
-                        <button type="submit" class="btn btn-primary w-50">Login</button>
+                    <div class="button-box w-100 d-flex justify-content-center mt-5">
+                        <button type="submit" class="button button-login">Login</button>
                     </div>
                 </form>
                 <?php
@@ -84,10 +81,6 @@ if (isset($_POST['username'])) {
 
     <!-- Fontawsome -->
     <script src="https://kit.fontawesome.com/ee9e0f07f2.js" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 
 </html>

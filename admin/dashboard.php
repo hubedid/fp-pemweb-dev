@@ -19,73 +19,64 @@ if (empty($_SESSION['logged_in'])) {
   <!-- Logo -->
   <link rel="icon" href="../image/logoatas.png" type="image/x-icon" />
 
-  <!-- Bootrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
-
   <!-- CSS -->
   <link rel="stylesheet" href="../css/admin.css" />
 </head>
 
 <body>
-  <div class="row gx-0">
+  <div class="grid-dashboard">
     <!-- Sidebar -->
-    <div class="sidebar col-2 bg-primary sticky-top">
-      <div class="image-box d-flex justify-content-center align-items-center p-4">
+    <div class="sidebar">
+      <div class="image-box">
         <img src="../image/logo2.png" alt="logo" />
       </div>
 
       <!-- menu -->
       <div class="menu-box">
-        <ul class="p-3 d-flex flex-column lis">
-          <li class="nav-item w-100 mb-2">
-            <a class="menu nav-link p-2" aria-current="page" href="./" style="<?= (empty($_GET['page']) ? 'background-color: white; color: #0275d8' : '') ?>"><i class="fa-solid fa-house me-3 ps-2"></i>Dashboard</a>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a class="menu-link <?= (empty($_GET['page']) ? 'active' : '') ?>" href="./"><i class="fa-solid fa-house me-3 ps-2"></i>Dashboard</a>
           </li>
-          <li class="nav-item w-100 mb-2">
-            <a class="menu nav-link p-2" aria-current="page" href="?page=addAdmin" style="<?= isset($_GET['page']) && $_GET['page'] == 'addAdmin' ? 'background-color: white; color: #0275d8' : '' ?>"><i class="fa-solid fa-user-gear me-3 ps-2"></i>Admin</a>
+          <li class="menu-item">
+            <a class="menu-link <?= (isset($_GET['page']) && $_GET['page'] == 'addAdmin' ? 'active' : '') ?>" href="?page=addAdmin"><i class="fa-solid fa-user-gear me-3 ps-2"></i>Admin</a>
           </li>
-          <li class="nav-item dropdown w-100 mb-2">
-            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addProperty' || $_GET['page'] == 'showProperty' || $_GET['page'] == 'detailProperty') ? 'background-color: white; color: #0275d8' : '' ?>">
-              <i class="fa-solid fa-building-circle-check me-3 ps-2"></i>Property
-            </a>
-            <ul class="dropdown-menu w-100">
+          <li class="menu-item dropdown">
+            <a class="menu-link <?= (isset($_GET['page']) && ($_GET['page'] == 'addProperty' || $_GET['page'] == 'showProperty' || $_GET['page'] == 'detailProperty') ? 'active' : '') ?>" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-building-circle-check me-3 ps-2"></i>Property</a>
+            <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="?page=addProperty">Insert Property</a>
+                <a class="dropdown-link" href="?page=addProperty">Insert Property</a>
               </li>
               <li>
-                <a class="dropdown-item" href="?page=showProperty">Show Property</a>
+                <a class="dropdown-link" href="?page=showProperty">Show Property</a>
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown w-100 mb-2">
-            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addSale' || $_GET['page'] == 'showSale' || $_GET['page'] == 'detailPenjualan') ? 'background-color: white; color: #0275d8' : '' ?>">
-              <i class="fa-solid fa-cart-shopping me-3 ps-2"></i>Sale
-            </a>
-            <ul class="dropdown-menu w-100">
+          <li class="menu-item dropdown">
+            <a class="menu-link <?= (isset($_GET['page']) && ($_GET['page'] == 'addSale' || $_GET['page'] == 'showSale' || $_GET['page'] == 'detailPenjualan') ? 'active' : '') ?>" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-cart-shopping me-3 ps-2"></i>Sale</a>
+            <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="?page=addSale">Insert sale</a>
+                <a class="dropdown-link" href="?page=addSale">Insert Sale</a>
               </li>
               <li>
-                <a class="dropdown-item" href="?page=showSale">Show sale</a>
+                <a class="dropdown-link" href="?page=showSale">Show Sale</a>
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown w-100 mb-2">
-            <a class="menu nav-link dropdown-toggle p-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="<?= isset($_GET['page']) && ($_GET['page'] == 'addAgent' || $_GET['page'] == 'showAgent') ? 'background-color: white; color: #0275d8' : '' ?>">
-              <i class="fa-solid fa-user me-3 ps-2"></i>Agent
-            </a>
-            <ul class="dropdown-menu w-100">
+          <li class="menu-item dropdown">
+            <a class="menu-link <?= (isset($_GET['page']) && ($_GET['page'] == 'addAgent' || $_GET['page'] == 'showAgent') ? 'active' : '') ?>" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user me-3 ps-2"></i>Agent</a>
+            <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="?page=addAgent">Insert agent</a>
+                <a class="dropdown-link" href="?page=addAgent">Insert Agent</a>
               </li>
               <li>
-                <a class="dropdown-item" href="?page=showAgent">Show agent</a>
+                <a class="dropdown-link" href="?page=showAgent">Show Agent</a>
               </li>
             </ul>
           </li>
         </ul>
-        <ul class="p-3">
-          <li class="nav-item w-100 p-2">
-            <a class="menu nav-link p-2" aria-current="page" href="dashboard.php?page=logout"><i class="fa-solid fa-right-from-bracket me-3 ps-2"></i>Logout</a>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a class="menu-link" href="dashboard.php?page=logout"><i class="fa-solid fa-right-from-bracket me-3 ps-2"></i>Logout</a>
           </li>
         </ul>
       </div>
@@ -94,7 +85,7 @@ if (empty($_SESSION['logged_in'])) {
     <!-- Akhir saidbar -->
 
     <!-- Content -->
-    <div class="col-10 main p-0">
+    <div class="main col-10 p-0">
       <div class="container-content m-5">
         <?php
         if (isset($_GET['page'])) {
@@ -154,10 +145,6 @@ if (empty($_SESSION['logged_in'])) {
 
   <!-- Fontawsome -->
   <script src="https://kit.fontawesome.com/ee9e0f07f2.js" crossorigin="anonymous"></script>
-
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 
 </html>

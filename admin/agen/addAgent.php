@@ -31,84 +31,73 @@ if (isset($_POST['nama'])) {
   }
 }
 ?>
-<div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
+<div class="welcome-box">
   <h2>Welcome To Your Agent Menu</h2>
 </div>
-<h1 class="heading-1 mt-3 mb-3 fw-bolder">Tambah Agen</h1>
+<h1 class="heading-1">Tambah Agen</h1>
 
 <!-- Alert insert -->
 <?php
 if ($status == "ok") {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Berhasil!</strong> Menyimpan data agen.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>';
+            <p><strong>Berhasil!</strong> Menyimpan data agen.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 }
 if ($status == "err") {
   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Gagal!</strong> Menyimpan data agen.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>';
+            <p><strong>Gagal!</strong> Menyimpan data agen.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
 }
 
 ?>
 
 <!-- Form -->
-<form class="form p-4 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
-  <div class="mb-3">
+<form class="form" action="" method="POST" novalidate enctype="multipart/form-data">
+  <div>
     <label for="#" class="form-label">Nama Agen</label>
     <input type="text" class="form-control" id="nama" name="nama" placeholder="name" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a name agen.</div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="#" class="form-label">Jenis Kelamin</label>
     <select id="jenis_kelamin" name="jenis_kelamin" class="form-select" required>
       <option selected disabled value="">Choose...</option>
       <option value="Laki-laki">Laki-laki</option>
       <option value="Perempuan">Perempuan</option>
     </select>
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please select a valid sex.</div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="#" class="form-label">Email</label>
     <input type="email" class="form-control" id="email" name="email" placeholder="email" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a email.</div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="#" class="form-label">Umur</label>
     <input type="text" class="form-control" id="umur" name="umur" placeholder="age" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a age.</div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="#" class="form-label">alamat</label>
     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="addres" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a addres.</div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="#" class="form-label">No Telepon</label>
     <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="phone number" required />
-    <div class="valid-feedback">Looks good!</div>
-    <div class="invalid-feedback">Please write a phone number.</div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="#" class="form-label">Foto</label>
-    <input type="file" class="form-control" aria-label="file example" name="gambar" required />
-    <div class="invalid-feedback">
-      Example invalid form file feedback
-    </div>
+    <input type="file" class="form-control-file" aria-label="file example" name="gambar" required />
   </div>
 
-  <button type="submit" class="btn btn-primary" name="kirim">Submit</button>
+  <button type="submit" class="button button-submit" name="kirim">Submit</button>
 </form>
 <!-- Akhir form -->

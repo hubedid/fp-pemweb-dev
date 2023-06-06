@@ -1,4 +1,5 @@
 <?php
+$statusDelete = "";
 if (isset($_GET['kode'])) {
   $queryDeletePenjualan = "DELETE FROM penjualan WHERE id_properti = '$_GET[kode]'";
   $resultDeletePenjualan = mysqli_query(connection(), $queryDeletePenjualan);
@@ -9,40 +10,62 @@ if (isset($_GET['kode'])) {
       $queryDeleteProperty = "DELETE FROM properti WHERE id_properti = '$_GET[kode]'";
       $resultDeleteProperty = mysqli_query(connection(), $queryDeleteProperty);
       if ($resultDeleteProperty) {
-        echo "<script>alert('Data berhasil dihapus!')</script>";
-        echo "<script>location='?page=showProperty'</script>";
+        $statusDelete = "ok";
+      } else {
+        $statusDelete = "err";
       }
     }
   }
 }
 ?>
-<div class="welcome-box bg-primary p-4 rounded-2 d-flex justify-content-between align-items-center">
+<div class="welcome-box welcome-box-search">
   <h2>Welcome To Your Property Menu</h2>
-  <form action="" method="GET" class="d-flex mt-2 mb-2" role="search">
+  <form action="" method="GET" class="search-form" role="search">
     <input name="page" type="hidden" value="showProperty" />
-    <input class="form-control me-2" name="search" type="search" placeholder="Search" <?= isset($_GET['search']) ? 'value="' . $_GET['search'] . '"' : '' ?> aria-label="Search" />
-    <button class="btn btn-outline-light" type="submit">
+    <input class="form-input" name="search" type="search" placeholder="Search" <?= isset($_GET['search']) ? 'value="' . $_GET['search'] . '"' : '' ?> aria-label="Search" />
+    <button class="button search-button" type="submit">
       Search
     </button>
-    <?= isset($_GET['search']) ? '<a class="btn btn-outline-info ms-2"  href="?page=showProperty">Reset</a>' : '' ?>
+    <?= isset($_GET['search']) ? '<a class="button search-button"  href="?page=showProperty">Reset</a>' : '' ?>
   </form>
 </div>
-<h1 class="heading-1 mt-3 mb-3 fw-bolder">Data Properti</h1>
+<h1 class="heading-1">Data Properti</h1>
 
 <?php
+// Alert delete
+if ($statusDelete == "ok") {
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p><strong>Berhasil!</strong> Menghapus data properti.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
+} else if ($statusDelete == "err") {
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <p><strong>Gagal!</strong> Menghapus data properti.</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>';
+}
+
 // Alert update
 if (@$_GET["statusUpdate"] !== NULL) {
   $statusUpdate = $_GET["statusUpdate"];
   if ($statusUpdate == "ok") {
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Berhasil!</strong> Mengubah data property.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
+            <p><strong>Berhasil!</strong> Mengubah data properti.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
   } else {
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Gagal!</strong> Mengubah data property.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
+            <p><strong>Gagal!</strong> Mengubah data properti.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>';
   }
 }
 ?>
@@ -81,7 +104,7 @@ if (@$_GET["statusUpdate"] !== NULL) {
         <td><?= $dataShowProperty['kota'] ?></td>
         <td><?= $dataShowProperty['provinsi'] ?></td>
         <td><?= $dataShowProperty['status'] ?></td>
-        <td class="d-flex gap-1">
+        <td class="action">
           <a href="?page=detailProperty&id_properti=<?php echo $dataShowProperty["id_properti"]; ?>"><i class="fa-solid fa-circle-info"></i></a>
           <a href="?page=updateProperty&kode=<?= $dataShowProperty['id_properti']; ?> "><i class="fa-solid fa-pen"></i></a>
           <a href="?page=showProperty&kode=<?= $dataShowProperty['id_properti']; ?>" onclick="return confirm('Menghapus properti akan menghapus data penjualan dengan properti yang berkaitan. Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
