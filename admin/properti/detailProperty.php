@@ -73,7 +73,7 @@
                 </tr>
                 <tr>
                     <th>Harga</th>
-                    <td><?= $dataShowProperty['harga'] ?></td>
+                    <td>Rp <?= number_format($dataShowProperty['harga'], 2, ',', '.') ?></td>
                 </tr>
                 <tr>
                     <th>Status</th>

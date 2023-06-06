@@ -100,11 +100,11 @@
         </tr>
         <tr>
           <th>Jumlah Dp</th>
-          <td><?= $dataDataPenjualan['jumlah_dp'] ?></td>
+          <td>Rp <?= number_format($dataDataPenjualan['jumlah_dp'], 2, ',', '.') ?></td>
         </tr>
         <tr>
           <th>Sisa bayar</th>
-          <td><?= $dataDataPenjualan['sisa_bayar'] ?></td>
+          <td>Rp <?= number_format($dataDataPenjualan['sisa_bayar'], 2, ',', '.') ?></td>
         </tr>
       </tbody>
     </table>
