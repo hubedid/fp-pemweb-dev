@@ -40,30 +40,30 @@ if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
 <!-- Alert -->
 <?php
 if ($statusInsert == "ok") {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-success">
             <p><strong>Berhasil!</strong> Menyimpan data admin.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
 } else if ($statusDelete == "ok") {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p><strong>Berhasiloo!</strong> Menghapus data properti.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  echo '<div class="alert alert-success">
+            <p><strong>Berhasil!</strong> Menghapus data properti.</p>
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
 } else if ($statusInsert == "err") {
-  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-danger">
             <p><strong>Gagal!</strong> Menyimpan data admin.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
 } else if ($statusDelete == "err") {
-  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-danger">
             <p><strong>Gagal!</strong> Menghapus data admin.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
@@ -108,7 +108,7 @@ if ($statusInsert == "ok") {
         <td><?= $dataDataAdmin['id_admin'] ?></td>
         <td><?= $dataDataAdmin['username'] ?></td>
         <td><?= $dataDataAdmin['password'] ?></td>
-        <td class="d-flex gap-1">
+        <td>
           <a href="?page=addAdmin&kode=<?= $dataDataAdmin['id_admin']; ?>&aksi=hapus" onclick="return confirm('Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>

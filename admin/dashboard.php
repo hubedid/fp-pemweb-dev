@@ -143,6 +143,9 @@ if (empty($_SESSION['logged_in'])) {
     <!-- Akhir content -->
   </div>
 
+  <!-- Close alert -->
+  <script src="../javascript/closeAlert.js"></script>
+
   <!-- Fontawsome -->
   <script src="https://kit.fontawesome.com/ee9e0f07f2.js" crossorigin="anonymous"></script>
 </body>

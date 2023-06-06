@@ -27,16 +27,16 @@ if (isset($_GET['kode'])) {
 <?php
 // Alert hapus 
 if ($statusDelete == "ok") {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-success">
             <p><strong>Berhasil!</strong> Menghapus data penjualan.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
 } else if ($statusDelete == "err") {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-danger">
         <p><strong>Gagal!</strong> Menghapus data penjualan.</p>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <button type="button" onclick="closeAlert(this)" class="btn-close">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>';
@@ -46,16 +46,16 @@ if ($statusDelete == "ok") {
 if (@$_GET["statusUpdate"] !== NULL) {
   $statusUpdate = $_GET["statusUpdate"];
   if ($statusUpdate == "ok") {
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-success">
             <p><strong>Berhasil!</strong> Mengubah data penjualan.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
   } else {
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-danger">
             <p><strong>Gagal!</strong> Mengubah data penjualan.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';

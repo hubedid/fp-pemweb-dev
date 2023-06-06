@@ -53,17 +53,17 @@ if (isset($_POST['nama_properti'])) {
 <!-- Alert insert -->
 <?php
 if ($status == "ok") {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-success">
             <p><strong>Berhasil!</strong> Menyimpan data properti.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
 }
 if ($status == "err") {
-  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-danger">
             <p><strong>Gagal!</strong> Menyimpan data properti.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';

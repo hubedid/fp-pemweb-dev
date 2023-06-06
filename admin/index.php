@@ -51,6 +51,16 @@ if (isset($_POST['username'])) {
         <div class="layer-1"></div>
         <div class="layer-2"></div>
         <div class="login-boxs">
+            <?php
+            if ($status == "err") {
+                echo '<div class="alert alert-danger">
+                                <p><strong>Username</strong> atau <strong>Password</strong>  salah!</p>
+                                <button type="button" onclick="closeAlert(this)" class="btn-close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>';
+            }
+            ?>
             <div class="login-box">
                 <h2>Login as Admin</h2>
                 <form action="" method="post">
@@ -66,18 +76,13 @@ if (isset($_POST['username'])) {
                         <button type="submit" class="button button-login">Login</button>
                     </div>
                 </form>
-                <?php
-                if ($status == "err") {
-                    echo '<div class="alert alert-danger alert-dismissible fade show pb-0 mt-3" role="alert">
-                                <p><strong>Username</strong> atau <strong>Password</strong>  salah!</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>';
-                }
-                ?>
             </div>
             <img class="logo-login" src="../image/logo2.png" alt="logo2">
         </div>
     </div>
+
+    <!-- Close alert -->
+    <script src="../javascript/closeAlert.js"></script>
 
     <!-- Fontawsome -->
     <script src="https://kit.fontawesome.com/ee9e0f07f2.js" crossorigin="anonymous"></script>

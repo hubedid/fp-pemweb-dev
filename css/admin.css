@@ -297,17 +297,11 @@ table {
 }
 
 .table tbody .action {
-  display: flex;
-  gap: 0.2rem;
-}
-
-.table tbody .action a {
-  color: #dc3545;
-  text-decoration: none;
-}
-
-.table tbody .action a:hover {
-  color: #bd2130;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem; */
+  width: 7.5rem;
 }
 
 .fa-circle-info {
@@ -327,7 +321,7 @@ table {
 .fa-trash {
   background-color: #dc3545;
   color: white;
-  padding: 0.5rem;
+  padding: 0.5rem 0.55rem;
   border-radius: 0.2rem;
 }
 
@@ -638,6 +632,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .alert strong {
   font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.alert p {
+  font-size: 0.9rem;
 }
 
 .alert .btn-close {

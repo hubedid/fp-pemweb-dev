@@ -16,9 +16,9 @@ if (isset($_GET['kode'])) {
       $queryDelete = "DELETE FROM agen WHERE id_agent = '$_GET[kode]'";
       $resultDelete = mysqli_query(connection(), $queryDelete);
       if ($resultDelete) {
-        echo "<h3>Hapus Berhasil</h3>";
+        $statusDelete = "ok";
       } else {
-        echo "<h3>Hapus Gagal</h3>";
+        $statusDelete = "err";
       }
     }
   }
@@ -42,16 +42,16 @@ if (isset($_GET['kode'])) {
 <?php
 // Alert delete
 if ($statusDelete == "ok") {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-success">
             <p><strong>Berhasil!</strong> Menghapus data agen.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
 } else if ($statusDelete == "err") {
-  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  echo '<div class="alert alert-danger">
             <p><strong>Gagal!</strong> Menghapus data agen.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
@@ -61,16 +61,16 @@ if ($statusDelete == "ok") {
 if (@$_GET["statusUpdate"] !== NULL) {
   $statusUpdate = $_GET["statusUpdate"];
   if ($statusUpdate == "ok") {
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-success">
             <p><strong>Berhasil!</strong> Mengubah data agen.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
   } else {
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-danger">
             <p><strong>Gagal!</strong> Mengubah data agen.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <button type="button" onclick="closeAlert(this)" class="btn-close">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>';
@@ -116,7 +116,7 @@ if (@$_GET["statusUpdate"] !== NULL) {
         <td>
           <img src="../image/<?= $dataDataAgen['gambar'] ?>" alt="" style="width: 8rem" />
         </td>
-        <td class="action">
+        <td class="action" style="width: 5.5rem;">
           <a href="?page=updateAgent&kode=<?= $dataDataAgen['id_agent']; ?>"><i class="fa-solid fa-pen"></i></a>
           <a href="?page=showAgent&kode=<?= $dataDataAgen['id_agent']; ?>" onclick="return confirm('Menghapus properti akan menghapus data properti dan penjualan dengan agen yang berkaitan. Apakah anda yakin?');"><i class="fa-solid fa-trash"></i></a>
         </td>
