@@ -597,9 +597,6 @@ p {
   color: #4ba3f2;
   margin: 0;
 }
-.carousel-item {
-  max-height: 35rem;
-}
 
 p.status-property {
   width: 10rem;
@@ -612,12 +609,14 @@ p.status-property {
   cursor: pointer;
   border: none;
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .detail-box-1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.2rem;
 }
 
 .detail-box-1 h3 {
@@ -632,12 +631,12 @@ p.status-property {
 .detail-box-2 {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .detail-addres-box {
   display: flex;
   justify-content: start;
+  align-items: center;
   width: 40%;
 }
 
@@ -747,3 +746,57 @@ a.whatsapp p {
 /* Akhir detail properti */
 
 /* Carousel */
+.slides {
+  width: 100%;
+  position: relative;
+}
+
+.slides .slide {
+  display: none;
+}
+
+.slides .slide img {
+  width: 100%;
+  height: 35rem;
+  object-fit: cover;
+  object-position: center;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+.slides .navigation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.slides .navigation .prev,
+.slides .navigation .next {
+  cursor: pointer;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  user-select: none;
+  transition: 0.6s ease;
+}
+
+.slides .navigation .prev:hover,
+.slides .navigation .next:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Akhir carousel */

@@ -22,7 +22,7 @@ if (isset($_GET['property'])) {
   <link rel="icon" href="image/logoatas.png" type="image/x-icon" />
 
   <!-- Bootrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" /> -->
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/app.css" />
@@ -34,8 +34,8 @@ if (isset($_GET['property'])) {
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
-      <a href="aboutMe.html">about me</a>
-      <a href="contact.html">contact</a>
+      <a href="aboutMe.php">about me</a>
+      <a href="contact.php">contact</a>
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
@@ -48,38 +48,22 @@ if (isset($_GET['property'])) {
       <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
       <h2>Detail properti</h2>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide">
-      <div class="carousel-indicators">
-        <?php
-        $queryGambar = "SELECT * FROM gambar_properti WHERE id_properti = '$_GET[property]'";
-        $resultGambar = mysqli_query(connection(), $queryGambar);
-        $no = 0;
-        while ($dataGambar = mysqli_fetch_array($resultGambar)) {
-        ?>
-          <button type="button" data-bs-target="#carouselExampleIndicators" <?= $no == 0 ? 'class="active" aria-current="true"' : '' ?> data-bs-slide-to="<?= $no ?>" aria-label="Slide <?= $no + 1 ?>"></button>
-        <?php $no++;
-        } ?>
-      </div>
-      <div class="carousel-inner">
-        <?php
-        $queryGambar2 = "SELECT * FROM gambar_properti WHERE id_properti = '$_GET[property]'";
-        $resultGambar2 = mysqli_query(connection(), $queryGambar2);
-        $no = 1;
-        while ($dataGambar2 = mysqli_fetch_array($resultGambar2)) {
-        ?>
-          <div class="carousel-item <?= $no == 1 ? 'active' : '' ?>">
-            <img style="max-height: 40rem" src="image/<?= $dataGambar2['gambar'] ?>" class="d-block w-100" alt="..." />
-          </div>
-        <?php $no++;
-        } ?>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+
+    <div class="slides">
+      <?php
+      $queryGambar = "SELECT * FROM gambar_properti WHERE id_properti = '$_GET[property]'";
+      $resultGambar = mysqli_query(connection(), $queryGambar);
+      $no = 1;
+      while ($dataGambar = mysqli_fetch_array($resultGambar)) {
+      ?>
+        <div class="slide <?= $no == 1 ? 'active' : '' ?>">
+          <img style="width: 100%;" src="image/<?= $dataGambar['gambar'] ?>" alt="">
+        </div>
+      <?php $no++;
+      } ?>
+      <div class="navigation">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(-1)">&#10095;</a>
       </div>
     </div>
     <p class="status-property"><?= $data['status'] ?></p>
@@ -156,8 +140,8 @@ if (isset($_GET['property'])) {
       <div class="footer-box">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
-          <a href="aboutMe.html">about me</a>
-          <a href="contact.html">contact</a>
+          <a href="aboutMe.php">about me</a>
+          <a href="contact.php">contact</a>
           <a href="property.php">property</a>
           <a href="agent.php">agent</a>
         </div>
@@ -171,17 +155,16 @@ if (isset($_GET['property'])) {
         </div>
       </div>
     </div>
-    <hr style="border-top: 2px solid white" />
+    <hr />
     <p>&copy; 2023 Property Website - Dikembangkan Oleh bayview</p>
   </footer>
   <!-- Akhir footer -->
 
+  <!-- Slider -->
+  <script src="javascript/sliderDetail.js"></script>
+
   <!-- Fontawsome -->
   <script src="https://kit.fontawesome.com/ee9e0f07f2.js" crossorigin="anonymous"></script>
-
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 
 </html>

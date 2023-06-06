@@ -24,8 +24,8 @@ include('database/connection.php');
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
-      <a href="aboutMe.html">about me</a>
-      <a href="contact.html">contact</a>
+      <a href="aboutMe.php">about me</a>
+      <a href="contact.php">contact</a>
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
@@ -76,8 +76,8 @@ include('database/connection.php');
       <div class="footer-box">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
-          <a href="aboutMe.html">about me</a>
-          <a href="contact.html">contact</a>
+          <a href="aboutMe.php">about me</a>
+          <a href="contact.php">contact</a>
           <a href="property.php">property</a>
           <a href="agent.php">agent</a>
         </div>

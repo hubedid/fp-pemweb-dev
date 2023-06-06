@@ -46,8 +46,8 @@ include 'database/connection.php';
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
-      <a href="aboutMe.html">about me</a>
-      <a href="contact.html">contact</a>
+      <a href="aboutMe.php">about me</a>
+      <a href="contact.php">contact</a>
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
@@ -282,8 +282,8 @@ include 'database/connection.php';
       <div class="footer-box">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
-          <a href="aboutMe.html">about me</a>
-          <a href="contact.html">contact</a>
+          <a href="aboutMe.php">about me</a>
+          <a href="contact.php">contact</a>
           <a href="property.php">property</a>
           <a href="agent.php">agent</a>
         </div>
@@ -303,24 +303,6 @@ include 'database/connection.php';
   <!-- Akhir footer -->
 
   <!-- Javascript -->
-  <script>
-    function formatRupiah(angka, prefix) {
-      var number_string = angka.replace(/[^,\d]/g, '').toString(),
-        split = number_string.split(','),
-        sisa = split[0].length % 3,
-        rupiah = split[0].substr(0, sisa),
-        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-      // tambahkan titik jika yang di input sudah menjadi angka ribuan
-      if (ribuan) {
-        separator = sisa ? '.' : '';
-        rupiah += separator + ribuan.join('.');
-      }
-
-      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-      return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-    }
-  </script>
   <script src="javascript/sliderImage.js"></script>
   <script src="javascript/sliderReview.js"></script>
 
