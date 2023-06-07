@@ -200,15 +200,11 @@ p {
 }
 
 .card-box {
-  /* margin-top: 2.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.93rem;
-  justify-content: center; */
   margin-top: 2.5rem;
   display: grid;
   grid-template-columns: auto auto auto;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
 .card {
