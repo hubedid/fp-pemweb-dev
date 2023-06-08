@@ -1090,6 +1090,14 @@ a.whatsapp p {
     padding: 1rem;
   }
 
+  .form-input {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
+
   /* Navbar */
   .navbar-container {
     width: 100%;
@@ -1100,7 +1108,7 @@ a.whatsapp p {
   }
 
   .navbar-container img {
-    height: 1.7rem;
+    height: 1.5rem;
   }
 
   .navbar-menu a {
@@ -1158,16 +1166,17 @@ a.whatsapp p {
 
   /* Property */
   .property-container {
-    padding: 2rem 1rem;
-  }
-
-  .card {
-    width: 11.5rem;
+    padding: 1.5rem 1rem;
   }
 
   .card-box {
     grid-template-columns: auto auto;
     gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .card {
+    width: 11.5rem;
   }
 
   .property-content-1 {
@@ -1194,11 +1203,19 @@ a.whatsapp p {
   }
 
   .why-box {
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 2rem 1rem 1rem 1rem;
   }
 
   .why-box h2 {
     text-align: center;
+  }
+
+  .why-box p {
+    font-size: 0.9rem;
+  }
+
+  .why-contents {
+    margin-top: 1.5rem;
   }
 
   /* Slider review */
@@ -1208,12 +1225,21 @@ a.whatsapp p {
   }
 
   .slider-container-review {
-    min-height: 20rem;
+    min-height: 21rem;
+  }
+
+  .comment {
+    margin-bottom: 0.9rem;
+  }
+
+  .author {
+    font-size: 0.8rem;
   }
 
   /* Alur pembelian */
   .container-alur {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     padding: 0rem 1rem;
   }
 
@@ -1231,6 +1257,10 @@ a.whatsapp p {
     margin-top: 2rem;
   }
 
+  .alur-detail p {
+    font-size: 0.9rem;
+  }
+
   /* Footer */
   .footer-container {
     width: 100%;
@@ -1242,13 +1272,17 @@ a.whatsapp p {
     width: 15rem;
   }
 
+  .footer-box.bayview img {
+    width: 7rem;
+  }
+
   .footer-box.tautan-langsung {
     display: none;
   }
 
   /* About me */
   .about-container {
-    padding: 2rem 2rem;
+    padding: 1.5rem 2rem;
     grid-template-columns: 1fr;
     grid-template-areas:
       "about-box-2"
@@ -1257,7 +1291,7 @@ a.whatsapp p {
   }
 
   .judul-halaman {
-    padding: 2rem 1rem 0 1rem;
+    padding: 1rem 1rem 0 1rem;
   }
 
   .judul-halaman h2 {
@@ -1266,6 +1300,10 @@ a.whatsapp p {
 
   .about-box-1 {
     grid-row: 2;
+  }
+
+  .about-box-1 p {
+    font-size: 0.9rem;
   }
 
   .about-box-2 {
@@ -1279,7 +1317,7 @@ a.whatsapp p {
 
   /* Contact */
   .contact-container {
-    padding: 2rem 2rem;
+    padding: 1.5rem 2rem;
     grid-template-columns: 1fr;
     grid-template-areas:
       "contact-box-1"
@@ -1315,6 +1353,11 @@ a.whatsapp p {
     margin-bottom: 2rem;
   }
 
+  .header-name i {
+    font-size: 1.7rem;
+    margin-right: 0.5rem;
+  }
+
   .detail-box-1 {
     margin-bottom: 0.5rem;
   }
@@ -1337,8 +1380,9 @@ a.whatsapp p {
   }
 
   .detail-box-3 {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     margin-top: 2rem;
+    justify-content: space-between;
   }
 
   .detail-boxs h5 {
@@ -1350,24 +1394,39 @@ a.whatsapp p {
   }
 
   .description h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
 
+  .description p {
+    font-size: 0.9rem;
+  }
+
   .contact-agent h3 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
   }
 
   .detail-contact-box {
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .contact-agent img {
     width: 9rem;
+  }
+
+  .contact-agent h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-agent h5 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
   }
 }
 

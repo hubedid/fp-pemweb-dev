@@ -45,20 +45,20 @@
       <form method="post" action="https://formspree.io/f/mayzgwql">
         <div class="email-form">
           <div class="name">
-            <input type="text" class="form-input" id="name" name="name" placeholder="masukkan nama anda" />
+            <input type="text" class="form-input" id="name" name="name" placeholder="nama" />
           </div>
           <div class="email">
-            <input type="email" class="form-input" id="email" name="email" placeholder="masukkan email anda" />
+            <input type="email" class="form-input" id="email" name="email" placeholder="email" />
           </div>
           <div class="phone">
-            <input type="text" class="form-input" id="phone" name="phone" placeholder="masukkan nomor hp anda" />
+            <input type="text" class="form-input" id="phone" name="phone" placeholder="nomor hp" />
           </div>
           <div class="subjek">
-            <input type="text" class="form-input" id="subjek" name="subjek" placeholder="masukkan subjek" />
+            <input type="text" class="form-input" id="subjek" name="subjek" placeholder="subjek" />
           </div>
         </div>
         <div class="message">
-          <textarea class="form-input" id="massage" name="massage" rows="3" placeholder="masukkan pesan anda"></textarea>
+          <textarea class="form-input" id="massage" name="massage" rows="3" placeholder="pesan"></textarea>
         </div>
         <button type="submit" class="button email-button">kirim</button>
       </form>
