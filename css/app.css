@@ -60,7 +60,9 @@ p {
 
 .slider-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .slider-overlay {
@@ -183,6 +185,26 @@ p {
   border-radius: 0.25rem;
   color: white;
 }
+
+.navbar-container .hamburger {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+  cursor: pointer;
+  width: 20px;
+}
+
+.navbar-container .hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #4ba3f2;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-container .hamburger:hover .bar {
+  background-color: #0069d9;
+}
 /* Akhir navbar */
 
 /* Property */
@@ -200,6 +222,7 @@ p {
 }
 
 .card-box {
+  max-width: 100%;
   margin-top: 2.5rem;
   display: grid;
   grid-template-columns: auto auto auto;
@@ -217,7 +240,6 @@ p {
 .property-content-1 {
   width: 100%;
   height: 15rem;
-  background-color: aquamarine;
 }
 
 .card-overlay {
@@ -514,17 +536,21 @@ p {
 /* Akhir footer */
 
 /* About me */
+
+.judul-halaman {
+  padding: 4rem 6rem 0 6rem;
+}
+
+.judul-halaman h2 {
+  color: #4ba3f2;
+}
+
 .about-container {
-  padding: 4rem 6rem;
+  padding: 2rem 6rem 4rem 6rem;
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-template-areas: "about-box-1 about-box-2";
   gap: 4rem;
-}
-
-.about-box-1 h2 {
-  color: #4ba3f2;
-  margin-bottom: 2.5rem;
 }
 
 .about-box-1 p {
@@ -545,10 +571,10 @@ p {
 
 /* Contact */
 .contact-container {
-  padding: 4rem 6rem;
+  padding: 2rem 6rem 4rem 6rem;
   display: grid;
   grid-template-columns: 2fr 3fr;
-  grid-template-areas: "about-box-1 about-box-2";
+  grid-template-areas: "contact-box-1 contact-box-2";
   gap: 4rem;
 }
 
@@ -560,13 +586,6 @@ p {
 
 .contact-box-1 img {
   width: 25rem;
-}
-
-.contact-box-2 h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #4ba3f2;
-  margin-bottom: 2.5rem;
 }
 
 .email-form {
@@ -815,3 +834,607 @@ a.whatsapp p {
   }
 }
 /* Akhir carousel */
+
+@media (max-width: 1280px) {
+  .card-box {
+    gap: 2rem;
+  }
+
+  .card {
+    width: 21rem;
+  }
+}
+
+@media (max-width: 1120px) {
+  .card-box {
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
+  }
+
+  .card {
+    width: 19rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Slider image */
+  .slider-container-image {
+    height: 50vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 50%;
+  }
+
+  .slider-overlay {
+    height: 50vh;
+  }
+
+  .header-box {
+    height: 50vh;
+  }
+
+  /* Navbar */
+  .navbar-container {
+    padding: 1rem 2rem;
+  }
+
+  .navbar-container img {
+    height: 2rem;
+  }
+
+  .navbar-menu {
+    width: 400px;
+  }
+
+  /* Property */
+  .property-container {
+    padding: 3rem 2rem;
+  }
+
+  .card {
+    width: 22rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 3rem;
+  }
+
+  .why-boxs {
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .why-box {
+    padding: 3rem 2rem 3rem 2rem;
+  }
+
+  /* Slider review */
+  .container-review {
+    margin-top: 3rem;
+    padding: 0 2rem;
+  }
+
+  /* Alur pembelian */
+  .container-alur {
+    margin-top: 3rem;
+    padding: 0rem 2rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    width: 100%;
+    background-color: #303030;
+    padding: 3rem 2rem 2rem 2rem;
+  }
+
+  /* About me */
+  .about-container {
+    padding: 2rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "about-box-2"
+      "about-box-1";
+    gap: 2rem;
+  }
+
+  .judul-halaman {
+    padding: 3rem 2rem 0 2rem;
+  }
+
+  .judul-halaman h2 {
+    text-align: center;
+  }
+
+  .about-box-1 {
+    grid-row: 2;
+  }
+
+  .about-box-2 {
+    grid-row: 1;
+    justify-content: center;
+  }
+
+  .about-box-2 img {
+    width: 30rem;
+  }
+
+  /* Contact */
+  .contact-container {
+    padding: 2rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "contact-box-1"
+      "contact-box-2";
+    gap: 2rem;
+  }
+
+  .contact-box-1 {
+    justify-content: center;
+  }
+
+  .contact-box-1 img {
+    width: 30rem;
+  }
+
+  .button.email-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  /* Detail properti */
+  .detail-container {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 810px) {
+  .card-box {
+    gap: 2rem;
+  }
+
+  .card {
+    width: 20.5rem;
+  }
+
+  /* Slider image */
+  .slider-container-image {
+    height: 50vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .slider-overlay {
+    height: 50vh;
+  }
+
+  .header-box {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 780px) {
+  .slider-image img {
+    width: 100%;
+    height: 50%;
+  }
+
+  .slider-overlay {
+    height: 50vh;
+  }
+
+  .header-box {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 450px) {
+  /* format text */
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  h6 {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  p {
+    font-weight: 200;
+    font-size: 1rem;
+  }
+
+  /* Slider image */
+  .slider-container-image {
+    height: 60vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .slider-overlay {
+    height: 60vh;
+  }
+
+  .header-box {
+    height: 60vh;
+    padding: 1rem;
+  }
+
+  /* Navbar */
+  .navbar-container {
+    width: 100%;
+    padding: 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .navbar-container img {
+    height: 1.7rem;
+  }
+
+  .navbar-menu a {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .navbar-menu a:hover {
+    padding: 0.25rem 1rem;
+    background-color: #4ba3f2;
+    border-radius: 0.25rem;
+    color: white;
+  }
+
+  .navbar-container .hamburger {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-container .hamburger.active .bar:nth-child(1) {
+    width: 20px;
+  }
+
+  .navbar-container .hamburger.active .bar:nth-child(2) {
+    width: 15px;
+  }
+
+  .navbar-container .hamburger.active .bar:nth-child(3) {
+    width: 10px;
+  }
+
+  .navbar-container .navbar-menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    padding: 3rem 0;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    z-index: -1;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+  }
+
+  .navbar-container .navbar-menu.active {
+    top: 0px;
+  }
+
+  .navbar-fix {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+  }
+
+  /* Property */
+  .property-container {
+    padding: 2rem 1rem;
+  }
+
+  .card {
+    width: 11.5rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .property-content-1 {
+    width: 100%;
+    height: 8rem;
+  }
+
+  .price-tag {
+    padding: 0.5rem;
+  }
+
+  .property-content-2 {
+    background-color: white;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .property-content-3 {
+    display: none;
+  }
+  /* Why */
+  .why-boxs {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .why-box {
+    padding: 2rem 1rem 2rem 1rem;
+  }
+
+  .why-box h2 {
+    text-align: center;
+  }
+
+  /* Slider review */
+  .container-review {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+
+  .slider-container-review {
+    min-height: 20rem;
+  }
+
+  /* Alur pembelian */
+  .container-alur {
+    margin-top: 2rem;
+    padding: 0rem 1rem;
+  }
+
+  .alur-box {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .alur-detail {
+    flex-direction: column;
+  }
+  .alur-detail img {
+    width: 8rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    width: 100%;
+    background-color: #303030;
+    padding: 2rem 1rem 2rem 1rem;
+  }
+
+  .footer-box.bayview {
+    width: 15rem;
+  }
+
+  .footer-box.tautan-langsung {
+    display: none;
+  }
+
+  /* About me */
+  .about-container {
+    padding: 2rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "about-box-2"
+      "about-box-1";
+    gap: 2rem;
+  }
+
+  .judul-halaman {
+    padding: 2rem 1rem 0 1rem;
+  }
+
+  .judul-halaman h2 {
+    text-align: center;
+  }
+
+  .about-box-1 {
+    grid-row: 2;
+  }
+
+  .about-box-2 {
+    grid-row: 1;
+    justify-content: center;
+  }
+
+  .about-box-2 img {
+    width: 20rem;
+  }
+
+  /* Contact */
+  .contact-container {
+    padding: 2rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "contact-box-1"
+      "contact-box-2";
+    gap: 2rem;
+  }
+
+  .contact-box-1 {
+    justify-content: center;
+  }
+
+  .contact-box-1 img {
+    width: 20rem;
+  }
+
+  .button.email-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  /* Detail properti */
+  .detail-container {
+    padding: 2rem 1rem;
+  }
+
+  /* Carousel */
+  .slides .slide img {
+    height: 20rem;
+  }
+
+  .header-name {
+    margin-bottom: 2rem;
+  }
+
+  .detail-box-1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-box-1 h3 {
+    font-size: 1.4rem;
+  }
+
+  .detail-addres-box {
+    width: 90%;
+  }
+
+  .detail-addres-box i,
+  h5 {
+    font-size: 0.9rem;
+  }
+
+  .detail-box-2 p {
+    font-size: 0.9rem;
+  }
+
+  .detail-box-3 {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .detail-boxs h5 {
+    font-size: 1.5rem;
+  }
+
+  .detail-boxs h6 {
+    font-size: 0.9rem;
+  }
+
+  .description h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-agent h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+
+  .detail-contact-box {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .contact-agent img {
+    width: 9rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    width: 11.2rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .footer-box.bayview {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 395px) {
+  .card {
+    width: 10.5rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .footer-box.bayview {
+    width: 11rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .card {
+    width: 10.2rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .about-box-2 img {
+    width: 16rem;
+  }
+
+  .contact-box-1 img {
+    width: 16rem;
+  }
+
+  .slider-container-review {
+    min-height: 23rem;
+  }
+
+  .footer-box.bayview {
+    width: 10rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    width: 9.7rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+}

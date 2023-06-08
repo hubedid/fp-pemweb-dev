@@ -16,7 +16,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar-container">
+  <nav class="navbar-container navbar-fix">
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
@@ -25,13 +25,21 @@
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </nav>
   <!-- Akhir navbar -->
 
   <!-- About me -->
+  <div class="judul-halaman">
+    <h2>Tentang kami</h2>
+  </div>
+
   <div class="about-container">
     <div class="about-box-1">
-      <h2>Tentang kami</h2>
       <p>
         Kami adalah perusahaan properti yang bergerak di bidang penjualan dan
         pembelian properti seperti rumah dan apartemen. Kami telah beroperasi
@@ -68,7 +76,7 @@
           di bidang penjualan properti.
         </p>
       </div>
-      <div class="footer-box">
+      <div class="footer-box tautan-langsung">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
           <a href="aboutMe.php">about me</a>
@@ -88,6 +96,8 @@
     </div>
     <hr />
     <p>&copy; 2023 Property Website - Dikembangkan Oleh bayview</p>
+
+    <script src="javascript/navbar.js"></script>
   </footer>
   <!-- Akhir footer -->
 </body>

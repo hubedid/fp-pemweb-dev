@@ -27,7 +27,7 @@ if (isset($_GET['property'])) {
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar-container">
+  <nav class="navbar-container navbar-fix">
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
@@ -36,6 +36,11 @@ if (isset($_GET['property'])) {
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </nav>
   <!-- Akhir navbar -->
 
@@ -43,7 +48,7 @@ if (isset($_GET['property'])) {
   <div class="detail-container">
     <div class="header-name">
       <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
-      <h2>Detail properti</h2>
+      <h2 class="detail-h2">Detail properti</h2>
     </div>
 
     <div class="slides">
@@ -134,7 +139,7 @@ if (isset($_GET['property'])) {
           di bidang penjualan properti.
         </p>
       </div>
-      <div class="footer-box">
+      <div class="footer-box tautan-langsung">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
           <a href="aboutMe.php">about me</a>
@@ -158,6 +163,7 @@ if (isset($_GET['property'])) {
   <!-- Akhir footer -->
 
   <!-- Slider -->
+  <script src="javascript/navbar.js"></script>
   <script src="javascript/sliderDetail.js"></script>
 
   <!-- Fontawsome -->

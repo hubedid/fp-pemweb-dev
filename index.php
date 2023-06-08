@@ -51,6 +51,11 @@ include 'database/connection.php';
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </nav>
   <!-- Akhir navbar -->
 
@@ -283,7 +288,7 @@ include 'database/connection.php';
           di bidang penjualan properti.
         </p>
       </div>
-      <div class="footer-box">
+      <div class="footer-box tautan-langsung">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
           <a href="aboutMe.php">about me</a>
@@ -307,6 +312,8 @@ include 'database/connection.php';
   <!-- Akhir footer -->
 
   <!-- Javascript -->
+  <script src="javascript/navbar.js"></script>
+  <script src="javascript/navbarScrool.js"></script>
   <script src="javascript/sliderImage.js"></script>
   <script src="javascript/sliderReview.js"></script>
 

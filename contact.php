@@ -16,7 +16,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar-container">
+  <nav class="navbar-container navbar-fix">
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
@@ -25,17 +25,23 @@
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
     </div>
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </nav>
   <!-- Akhir navbar -->
 
   <!-- Contact -->
+  <div class="judul-halaman">
+    <h2>Hubungi kami</h2>
+  </div>
   <div class="contact-container">
     <div class="contact-box-1">
       <img src="image/contact.jpg" alt="contact" />
     </div>
     <div class="contact-box-2">
-      <h2>Hubungi kami</h2>
-
       <form method="post" action="https://formspree.io/f/mayzgwql">
         <div class="email-form">
           <div class="name">
@@ -71,7 +77,7 @@
           di bidang penjualan properti.
         </p>
       </div>
-      <div class="footer-box">
+      <div class="footer-box tautan-langsung">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
           <a href="aboutMe.php">about me</a>
@@ -93,6 +99,8 @@
     <p>&copy; 2023 Property Website - Dikembangkan Oleh bayview</p>
   </footer>
   <!-- Akhir footer -->
+
+  <script src="javascript/navbar.js"></script>
 </body>
 
 </html>

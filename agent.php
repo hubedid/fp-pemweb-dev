@@ -20,7 +20,7 @@ include('database/connection.php');
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar-container">
+  <nav class="navbar-container navbar-fix">
     <img src="image/logo.png" alt="logo" />
     <div class="navbar-menu">
       <a href="index.php">home</a>
@@ -28,6 +28,11 @@ include('database/connection.php');
       <a href="contact.php">contact</a>
       <a href="property.php">property</a>
       <a href="agent.php">agent</a>
+    </div>
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   </nav>
   <!-- Akhir navbar -->
@@ -73,7 +78,7 @@ include('database/connection.php');
           di bidang penjualan properti.
         </p>
       </div>
-      <div class="footer-box">
+      <div class="footer-box tautan-langsung">
         <h5>Tautan langsung</h5>
         <div class="footer-menu">
           <a href="aboutMe.php">about me</a>
@@ -95,6 +100,8 @@ include('database/connection.php');
     <p>&copy; 2023 Property Website - Dikembangkan Oleh bayview</p>
   </footer>
   <!-- Akhir footer -->
+
+  <script src="javascript/navbar.js"></script>
 </body>
 
 </html>
