@@ -1219,6 +1219,20 @@ a.whatsapp p {
     padding: 0.5rem;
   }
 
+  .price-tag h3 {
+    /* color: #fff; */
+    background-color: #4ba3f2;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .price-tag h5 {
+    display: none;
+  }
+
   .property-content-2 {
     background-color: white;
     padding: 0.5rem 0.5rem;
