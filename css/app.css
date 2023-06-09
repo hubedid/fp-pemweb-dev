@@ -1268,6 +1268,16 @@ a.whatsapp p {
     margin-top: 1.5rem;
   }
 
+  .why-contents .bg-icon {
+    height: 40px;
+    min-width: 40px;
+    margin-right: 1rem;
+  }
+
+  .bg-icon i {
+    font-size: 1.2rem;
+  }
+
   /* Slider review */
   .container-review {
     margin-top: 2rem;
@@ -1321,10 +1331,6 @@ a.whatsapp p {
   .footer-box.bayview {
     width: 15rem;
   }
-
-  /* .footer-box.bayview img {
-    width: 7rem;
-  } */
 
   .footer-box.tautan-langsung {
     display: none;
