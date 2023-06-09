@@ -28,7 +28,10 @@ if (isset($_GET['property'])) {
 <body>
   <!-- Navbar -->
   <nav class="navbar-container navbar-fix">
-    <img src="image/logo.png" alt="logo" />
+    <div class="logo">
+      <img src="image/logo-3.png" alt="logo" />
+      <p>bayview.</p>
+    </div>
     <div class="navbar-menu">
       <a href="index.php">home</a>
       <a href="aboutMe.php">about me</a>
@@ -132,7 +135,10 @@ if (isset($_GET['property'])) {
   <footer class="footer-container">
     <div class="footer-boxs">
       <div class="footer-box bayview">
-        <img src="image/logo.png" alt="logo" />
+        <div class="logo-footer">
+          <img src="image/logo-3.png" alt="logo" />
+          <h5>bayview.</h5>
+        </div>
         <p>
           Kami mengutamakan kualitas dalam setiap aspek pekerjaan yang kami
           lakukan. Tim kami terdiri dari profesional berpengalaman yang ahli

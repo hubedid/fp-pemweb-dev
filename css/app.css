@@ -160,8 +160,21 @@ p {
   transition: background-color 0.3s ease;
 }
 
-.navbar-container img {
-  height: 2rem;
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  height: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.logo p {
+  font-size: 1.1rem;
+  color: #4ba3f2;
+  font-weight: 500;
 }
 
 .navbar-menu {
@@ -200,6 +213,12 @@ p {
   height: 3px;
   background-color: #4ba3f2;
   transition: 0.2s ease-in-out;
+}
+
+.navbar-container .hamburger .bar.bar-putih {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
 }
 
 .navbar-container .hamburger:hover .bar {
@@ -497,8 +516,15 @@ p {
   width: 22rem;
 }
 
-.footer-box img {
-  width: 9rem;
+.logo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.logo-footer img {
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .footer-box p {
@@ -880,10 +906,6 @@ a.whatsapp p {
     padding: 1rem 2rem;
   }
 
-  .navbar-container img {
-    height: 2rem;
-  }
-
   .navbar-menu {
     width: 400px;
   }
@@ -1102,13 +1124,19 @@ a.whatsapp p {
   .navbar-container {
     width: 100%;
     padding: 1rem 1rem;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0);
     position: fixed;
     transition: background-color 0.2s ease-in-out;
   }
 
-  .navbar-container img {
-    height: 1.5rem;
+  .logo img {
+    height: 1.4rem;
+    display: none;
+  }
+
+  .logo p {
+    font-size: 1.1rem;
+    display: none;
   }
 
   .navbar-menu a {
@@ -1130,14 +1158,17 @@ a.whatsapp p {
 
   .navbar-container .hamburger.active .bar:nth-child(1) {
     width: 20px;
+    background-color: #4ba3f2;
   }
 
   .navbar-container .hamburger.active .bar:nth-child(2) {
     width: 15px;
+    background-color: #4ba3f2;
   }
 
   .navbar-container .hamburger.active .bar:nth-child(3) {
     width: 10px;
+    background-color: #4ba3f2;
   }
 
   .navbar-container .navbar-menu {
@@ -1166,7 +1197,7 @@ a.whatsapp p {
 
   /* Property */
   .property-container {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1rem 1rem;
   }
 
   .card-box {
@@ -1196,6 +1227,11 @@ a.whatsapp p {
   .property-content-3 {
     display: none;
   }
+
+  .lihat-selengkapnya-box {
+    margin-top: 1rem;
+  }
+
   /* Why */
   .why-boxs {
     width: 100%;

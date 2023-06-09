@@ -21,9 +21,12 @@ include 'database/connection.php';
   <!-- Header -->
   <header class="slider-container-image">
     <div class="slider-image">
-      <img src="image/hero1.jpg" alt="Image 1" />
-      <img src="image/hero2.jpg" alt="Image 2" />
-      <img src="image/hero3.jpg" alt="Image 3" />
+      <img src="image/1.jpg" alt="Image 1" />
+      <img src="image/2.jpg" alt="Image 2" />
+      <img src="image/6.jpg" alt="Image 6" />
+      <img src="image/7.jpg" alt="Image 7" />
+      <img src="image/9.jpg" alt="Image 9" />
+      <img src="image/10.jpg" alt="Image 10" />
     </div>
     <div class="slider-overlay">
       <div class="header-box">
@@ -43,7 +46,10 @@ include 'database/connection.php';
 
   <!-- Navbar -->
   <nav class="navbar-container">
-    <img src="image/logo.png" alt="logo" />
+    <div class="logo">
+      <img src="image/logo-3.png" alt="logo" />
+      <p>bayview.</p>
+    </div>
     <div class="navbar-menu">
       <a href="index.php">home</a>
       <a href="aboutMe.php">about me</a>
@@ -52,9 +58,9 @@ include 'database/connection.php';
       <a href="agent.php">agent</a>
     </div>
     <div class="hamburger">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+      <div class="bar bar-putih"></div>
+      <div class="bar bar-putih"></div>
+      <div class="bar bar-putih"></div>
     </div>
   </nav>
   <!-- Akhir navbar -->
@@ -281,7 +287,10 @@ include 'database/connection.php';
   <footer class="footer-container">
     <div class="footer-boxs">
       <div class="footer-box bayview">
-        <img src="image/logo.png" alt="logo" />
+        <div class="logo-footer">
+          <img src="image/logo-3.png" alt="logo" />
+          <h5>bayview.</h5>
+        </div>
         <p>
           Kami mengutamakan kualitas dalam setiap aspek pekerjaan yang kami
           lakukan. Tim kami terdiri dari profesional berpengalaman yang ahli
@@ -314,6 +323,7 @@ include 'database/connection.php';
   <!-- Javascript -->
   <script src="javascript/navbar.js"></script>
   <script src="javascript/navbarScrool.js"></script>
+  <script src="javascript/barScrool.js"></script>
   <script src="javascript/sliderImage.js"></script>
   <script src="javascript/sliderReview.js"></script>
 

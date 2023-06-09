@@ -4,6 +4,6 @@ window.addEventListener("scroll", function () {
     navbar.style.backgroundColor = "#ffffff"; /* Warna saat discroll */
   } else {
     navbar.style.backgroundColor =
-      "rgba(0, 0, 0, 0.4)"; /* Warna awal (transparan) */
+      "rgba(0, 0, 0, 0.0)"; /* Warna awal (transparan) */
   }
 });
