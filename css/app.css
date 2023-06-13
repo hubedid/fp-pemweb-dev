@@ -139,6 +139,7 @@ p {
 .button.search-button {
   margin-top: 1rem;
   margin-left: 0.5rem;
+  text-decoration: none;
 }
 
 .search-form {
