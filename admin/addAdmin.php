@@ -25,12 +25,12 @@ if (isset($_GET['aksi']) == 'hapus' && $_GET['kode']) {
 <div class="welcome-box welcome-box-search">
   <h2>Welcome To Your Admin Menu</h2>
   <form action="" method="GET" class="search-form" role="search">
-    <input name="page" type="hidden" value="showSale" />
+    <input name="page" type="hidden" value="addAdmin" />
     <input class="form-input" name="search" type="search" placeholder="Search" <?= isset($_GET['search']) ? 'value="' . $_GET['search'] . '"' : '' ?> aria-label="Search" />
     <button class="button search-button" type="submit">
       Search
     </button>
-    <?= isset($_GET['search']) ? '<a class="button search-button"  href="?page=showSale">Reset</a>' : '' ?>
+    <?= isset($_GET['search']) ? '<a class="button search-button"  href="?page=addAdmin">Reset</a>' : '' ?>
   </form>
 </div>
 
@@ -99,6 +99,10 @@ if ($statusInsert == "ok") {
 
     <?php
     $queryDataAdmin = "SELECT * FROM admin";
+    if (isset($_GET['search'])) {
+      $search = mysqli_real_escape_string(connection(), $_GET['search']);
+      $queryDataAdmin = "SELECT * FROM admin WHERE id_admin like '%$search%' or username like '%$search%'";
+    }
     $resultDataAdmin = mysqli_query(connection(), $queryDataAdmin);
     $no = 1;
     while ($dataDataAdmin = mysqli_fetch_array($resultDataAdmin)) {
