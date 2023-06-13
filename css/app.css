@@ -862,6 +862,19 @@ a.whatsapp p {
 /* Akhir carousel */
 
 @media (max-width: 1280px) {
+  .slider-container-image {
+    height: 100vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .slider-overlay {
+    height: 100vh;
+  }
+
   .card-box {
     gap: 2rem;
   }
