@@ -1,9 +1,9 @@
 <?php
-$statusUpdate = "";
-$queryShow = mysqli_query(connection(), "SELECT * FROM agen WHERE id_agent = '$_GET[kode]'");
-$resultShow = mysqli_fetch_array($queryShow);
+$statusUpdate = ""; //digunakan untuk menyimpan status berhasil atau tidaknya dalam mengupdate data agen (ok/err)
+$queryShow = mysqli_query(connection(), "SELECT * FROM agen WHERE id_agent = '$_GET[kode]'"); //mencari data agen sesuai id(kode)
+$resultShow = mysqli_fetch_array($queryShow); //mengisi nilai default di form update data agen.
 
-if (isset($_POST['kirim'])) {
+if (isset($_POST['kirim'])) { //mengupdate tabel agaen berdasarkan data yang dikirim (method post)
   $queryUpdate = "UPDATE agen SET 
   nama = '$_POST[nama]',
   jenis_kelamin = '$_POST[jenis_kelamin]',
@@ -11,31 +11,31 @@ if (isset($_POST['kirim'])) {
   alamat = '$_POST[alamat]', 
   no_telp = '$_POST[no_telp]', 
   email = '$_POST[email]' WHERE id_agent='$_GET[kode]'";
-  $resultUpdate = mysqli_query(connection(), $queryUpdate);
-  if ($resultUpdate) {
-    if (isset($_POST['currentGambar']) && is_uploaded_file($_FILES['gambar']['tmp_name'])) {
-      $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
-      $tipe = $_FILES['gambar']['type'];
-      $size = $_FILES['gambar']['size'];
+  $resultUpdate = mysqli_query(connection(), $queryUpdate); //menyimpan status update
+  if ($resultUpdate) { //pengecekan status update
+    if (isset($_POST['currentGambar']) && is_uploaded_file($_FILES['gambar']['tmp_name'])) { //pengecekan format gambar
+      $ext  = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png'); // daftar ekstensi file yang diperbolehkan
+      $tipe = $_FILES['gambar']['type'];//menyimpan informasi type file gambar yang diunggah
+      $size = $_FILES['gambar']['size'];//menyimpan informasi size file gambar yang diunggah
       if (is_uploaded_file($_FILES['gambar']['tmp_name'])) { //cek apakah ada file yang di upload
-        if (!in_array(($tipe), $ext)) { //cek ekstensi file
+        if (!in_array(($tipe), $ext)) { //Pengecekan ekstensi file
           echo '<script type="text/javascript">alert("Format gambar tidak diperbolehkan!");window.history.go(-1)</script>';
-        } else if ($size > 2097152) {
+        } else if ($size > 2097152) { //Pengecekan Ukuran file
           echo '<script type="text/javascript">alert("Ukuran gambar terlalu besar!");window.history.go(-1);</script>';
-        } else {
-          $extractFile = pathinfo($_FILES['gambar']['name']);
-          $dir         = "../image/";
-          $newName = microtime() . '.' . $extractFile['extension'];
-          //pindahkan file yang di upload ke directory tujuan
+        } else { //jika berhasil melalui pengecekan
+          $extractFile = pathinfo($_FILES['gambar']['name']); //Mengambil informasi path dan nama file
+          $dir         = "../image/";  //Menentukan direktori
+          $newName = microtime() . '.' . $extractFile['extension']; // deklarasi nama baru =  timestamp dan ekstensi file
+          //memindahkan file yang di upload ke directory tujuan
           if (move_uploaded_file($_FILES['gambar']['tmp_name'], $dir . $newName)) {
             unlink("../image/" . $_POST['currentGambar']);
             $queryUpdateGambar = "UPDATE agen SET gambar = '$newName' WHERE gambar = '$_POST[currentGambar]' ";
             $resultUpdateGambar = mysqli_query(connection(), $queryUpdateGambar);
-            if ($resultUpdateGambar) {
-              $status = "ok";
+            if ($resultUpdateGambar) { //Pengecekan hasil update gambar 
+              $status = "ok"; //berhasil
               header('Location: ?page=showAgent&statusUpdate=' . $statusUpdate);
-            } else {
-              echo '<script type="text/javascript">alert("Error Query Gambar");window.history.go(-1);</script>';
+            } else { //gagal
+              echo '<script type="text/javascript">alert("Error Query Gambar");window.history.go(-1);</script>'; /
             }
           } else {
             echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
@@ -52,6 +52,7 @@ if (isset($_POST['kirim'])) {
   header('Location: ?page=showAgent&statusUpdate=' . $statusUpdate);
 }
 
+//header
 ?>
 <div class="welcome-box">
   <h2>Welcome To Your Agent Menu</h2>
@@ -108,16 +109,16 @@ if (isset($_POST['kirim'])) {
 <!-- Akhir form -->
 
 <script>
-  function fileValidation(current = null) {
+  function fileValidation(current = null) { //validasi file gambar
     var fileInput = document.getElementById('gambar');
-    var filePath = fileInput.value;
+    var filePath = fileInput.value; 
     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
 
-    if (!allowedExtensions.exec(filePath)) {
+    if (!allowedExtensions.exec(filePath)) { 
       alert('Invalid file type');
       fileInput.value = '';
       return false;
-    } else {
+    } else { 
       if (fileInput.files && fileInput.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
