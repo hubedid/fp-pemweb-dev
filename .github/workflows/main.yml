@@ -22,7 +22,7 @@ jobs:
       run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USER_VPS }}@${{ secrets.IP_VPS }} "
             git config --global safe.directory '*' ;
-            cd hosting/pemweb.hoaks.my.id/bayview ;
+            cd ${{ vars.DIR }} ;
             if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/hubedid/fp-pemweb-dev.git .; fi
             git checkout . ;
             git pull origin master ;
