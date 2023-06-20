@@ -3,7 +3,7 @@ $statusDelete = ""; //digunakan untuk menyimpan status berhasil atau tidaknya da
 if (isset($_GET['kode'])) { //pengecekan kode untuk agen yg akan dihapus
   $queryDeletePenjualan = "DELETE FROM penjualan WHERE id_agen = '$_GET[kode]'"; // menghapus data penjualan
   $resultDeletePenjualan = mysqli_query(connection(), $queryDeletePenjualan);
-  if ($resultDeletePenjualan) { /
+  if ($resultDeletePenjualan) { 
     $querySearchProperty = "SELECT * FROM properti WHERE id_agen = '$_GET[kode]'"; // mencari data properti yg terkait dg agen
     $resultSearchProperty = mysqli_query(connection(), $querySearchProperty);
     while ($dataSearchProperty = mysqli_fetch_array($resultSearchProperty)) {
